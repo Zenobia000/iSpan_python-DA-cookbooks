@@ -1,0 +1,19 @@
+logging:
+  level: INFO
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+
+pipelines:
+  pipeline1:
+    steps:
+      - name: Step1
+        parameters:
+          param1: value1
+          param2: value2
+      - name: Step2
+        parameters:
+          param1: value3
+  pipeline2:
+    steps:
+      - name: StepA
+        parameters:
+          paramA: valueA
