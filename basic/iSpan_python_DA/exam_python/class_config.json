@@ -1,0 +1,7 @@
+{
+    "total_students": 30,
+    "class_list": [
+        {"student_id": "1", "name": "學生1", "class_name": "資料分析A班"},
+        {"student_id": "2", "name": "學生2", "class_name": "資料分析A班"}
+    ]
+} 

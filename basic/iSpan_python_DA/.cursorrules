@@ -1,0 +1,368 @@
+# .cursorrules 文件：軟體開發與 AGI 融合指引 
+ 
+本文件旨在建立一套涵蓋軟體開發全流程與 AGI 輔助技術的整體指引，幫助團隊與個人達成快速原型 (POC) 開發、知識積累與持續優化。文件整合了以下各部分內容： 
+ 
+- 與使用者互動及內部記錄的基本指示   
+- 開發過程中各角色的分工與職責   
+- 軟體開發流程與運算思維方法   
+- 快速 POC 開發的 SOP 指引   
+- 持續學習與自我優化的機制   
+- 套件與版本紀錄機制（含版本相依性守則）   
+- 依賴查詢：透過官方文件 URL 搜尋套件相依性資訊 
+ 
+--- 
+ 
+## 一、基本指示 (Instructions) 
+ 
+- **可重用資訊記錄**   
+  在與使用者互動過程中，若發現專案中可重用的資訊（例如函式庫版本、模型名稱、錯誤修正或收到的糾正），請立即記錄於本文件的 **Lessons** 區塊，避免日後重複相同錯誤。 
+ 
+- **Scratchpad 作為思考與記錄工具**   
+  - 使用本文件作為 Scratchpad（工作筆記區），組織與記錄所有新任務的思考、規劃與進度。   
+  - 開發流程規劃 - 任務內容 
+  - 接到新任務時，首先回顧 Scratchpad 內容，若有與當前任務無關的舊任務，請先清除。   
+  - 說明任務內容、規劃完成任務所需步驟，可使用 todo markers 表示進度，如：   
+    - [X] 任務 1   
+    - [ ] 任務 2   
+  - 完成子任務時更新進度，並於每個里程碑後反思與記錄，確保全局規劃與細節追蹤兼備。 
+ 
+--- 
+ 
+## 二、Cursor Learned 
+ 
+- 處理搜尋結果時，確保正確處理不同國際查詢的字符編碼（UTF-8）。 
+- 在 stderr 中輸出除錯資訊，同時保持 stdout 輸出整潔，便於整合管道操作。 
+- 使用 matplotlib 畫圖時，若需採用 seaborn 風格，請使用 seaborn-v0_8 而非傳統 `seaborn`（因近期版本變更）。 
+- 使用 OpenAI 的 GPT-4 時，請以 gpt-4o 作為模型名稱，尤其在具備視覺功能時。 
+ 
+--- 
+ 
+## 三、資料夾結構規劃 
+ 
+### Python 數據分析三大套件實戰應用課程資料夾結構
+
+```
+/Python_DA_Course/                       # 課程根目錄
+│
+├── M1_Numpy_Basic/                      # 模組1: Numpy核心操作與矩陣思維
+│   ├── data/                            # 模組資料
+│   ├── exercises/                       # 練習題
+│   │   ├── M1_exercise.ipynb            # 課後練習
+│   │   └── M1_solutions.ipynb           # 練習解答
+│   ├── notebooks/                       # 教學筆記本
+│   │   ├── M1.1_ndarray_basics.ipynb    # ndarray與list差異
+│   │   ├── M1.2_array_creation.ipynb    # ndarray建立方式
+│   │   ├── M1.3_indexing_slicing.ipynb  # 索引與切片技巧
+│   │   ├── M1.4_broadcasting.ipynb      # Broadcasting原理與實務應用
+│   │   ├── M1.5_math_functions.ipynb    # Numpy常用數學函數
+│   │   └── M1.6_statistical_case.ipynb  # 小型統計分析應用
+│   └── slides/                          # 教學投影片
+│       └── M1_slides.pdf
+│
+├── M2_Pandas_Basic/                     # 模組2: Pandas資料框的讀寫與處理入門
+│   ├── data/                            # 模組資料 
+│   │   ├── sample_data.csv              # 範例CSV資料
+│   │   └── sample_data.xlsx             # 範例Excel資料
+│   ├── exercises/                       # 練習題
+│   │   ├── M2_exercise.ipynb
+│   │   └── M2_solutions.ipynb
+│   ├── notebooks/                       # 教學筆記本
+│   │   ├── M2.1_dataframe_series.ipynb  # DataFrame與Series基礎操作
+│   │   ├── M2.2_file_reading.ipynb      # 檔案讀取與索引操作
+│   │   ├── M2.3_selection_methods.ipynb # 資料選取技巧
+│   │   ├── M2.4_missing_values.ipynb    # 缺失值處理
+│   │   └── M2.5_data_conversion.ipynb   # 資料型態轉換與處理
+│   └── slides/                          # 教學投影片
+│       └── M2_slides.pdf
+│
+├── M3_Pandas_Advanced/                  # 模組3: Pandas進階處理技巧與Groupby應用
+│   ├── data/                            # 模組資料 
+│   ├── exercises/                       # 練習題
+│   │   ├── M3_exercise.ipynb
+│   │   └── M3_solutions.ipynb
+│   ├── notebooks/                       # 教學筆記本
+│   │   ├── M3.1_conditional_filtering.ipynb  # 條件篩選與多重條件語法
+│   │   ├── M3.2_groupby_aggregation.ipynb    # Groupby與Aggregation應用
+│   │   ├── M3.3_pivot_crosstab.ipynb         # Pivot Table與Crosstab
+│   │   ├── M3.4_merge_join.ipynb             # Merge與Join操作
+│   │   └── M3.5_time_series.ipynb            # 時間序列資料處理
+│   └── slides/                          # 教學投影片
+│       └── M3_slides.pdf
+│
+├── M4_Matplotlib_Seaborn_Basic/         # 模組4: Matplotlib與Seaborn基礎視覺化
+│   ├── data/                            # 模組資料
+│   ├── exercises/                       # 練習題
+│   │   ├── M4_exercise.ipynb
+│   │   └── M4_solutions.ipynb
+│   ├── notebooks/                       # 教學筆記本
+│   │   ├── M4.1_matplotlib_basics.ipynb     # Matplotlib基本圖形語法
+│   │   ├── M4.2_common_plots.ipynb          # 常見圖表實作
+│   │   ├── M4.3_seaborn_intro.ipynb         # Seaborn介紹與統計圖
+│   │   └── M4.4_plot_styling.ipynb          # 圖形美化技巧
+│   └── slides/                          # 教學投影片
+│       └── M4_slides.pdf
+│
+├── M5_Business_Statistical_Viz/         # 模組5: 商業與統計視覺化圖表應用
+│   ├── data/                            # 模組資料
+│   │   └── sales_data.csv               # 商業資料範例
+│   ├── exercises/                       # 練習題
+│   │   ├── M5_exercise.ipynb
+│   │   └── M5_solutions.ipynb
+│   ├── notebooks/                       # 教學筆記本
+│   │   ├── M5.1_kpi_charts.ipynb           # KPI長條圖與比較圖
+│   │   ├── M5.2_distribution_plots.ipynb   # 分布圖與密度圖
+│   │   ├── M5.3_correlation_heatmap.ipynb  # 散佈圖與相關係數視覺化
+│   │   ├── M5.4_boxplots_outliers.ipynb    # 箱型圖與異常值檢測
+│   │   └── M5.5_business_report.ipynb      # 商業報表風格圖表製作
+│   └── slides/                          # 教學投影片
+│       └── M5_slides.pdf
+│
+├── M6_Plotly_Projects/                  # 模組6: Plotly與專題實作
+│   ├── data/                            # 專題資料集
+│   │   ├── project_dataset1.csv
+│   │   └── project_dataset2.csv
+│   ├── exercises/                       # 練習題
+│   │   ├── M6_exercise.ipynb
+│   │   └── M6_solutions.ipynb
+│   ├── notebooks/                       # 教學筆記本
+│   │   ├── M6.1_plotly_intro.ipynb       # Plotly快速入門
+│   │   ├── M6.2_dashboard_logic.ipynb    # Dashboard構成邏輯
+│   │   ├── M6.3_integration.ipynb        # 數據操作與圖表整合
+│   │   └── M6.4_capstone_project.ipynb   # 實作專題
+│   ├── projects/                        # 學員專題範例
+│   │   ├── project_template.ipynb
+│   │   └── sample_project_solution.ipynb
+│   └── slides/                          # 教學投影片
+│       └── M6_slides.pdf
+│
+├── supplementary/                       # 補充教材
+│   ├── cheatsheets/                     # 快速參考表
+│   │   ├── numpy_cheatsheet.pdf
+│   │   ├── pandas_cheatsheet.pdf
+│   │   └── matplotlib_seaborn_cheatsheet.pdf
+│   │
+│   ├── datasets/                        # 通用資料集
+│   │   ├── housing.csv
+│   │   ├── stocks.csv
+│   │   └── titanic.csv
+│   │
+│   ├── references/                      # 參考資料
+│   │   ├── recommended_books.md
+│   │   └── useful_resources.md
+│   │
+│   └── advanced_topics/                 # 進階主題
+│       ├── performance_optimization.ipynb
+│       └── advanced_visualization.ipynb
+│
+├── common/                              # 共用程式碼與模組
+│   ├── helpers/                         # 輔助函數
+│   │   ├── data_loader.py
+│   │   └── plot_helpers.py
+│   │
+│   └── templates/                       # 範本
+│       ├── report_template.ipynb
+│       └── analysis_template.ipynb
+│
+└── README.md                            # 課程說明文件
+```
+
+### 資料夾規劃說明
+
+1. **模組化結構**: 
+   - 依照課程六大模組建立對應資料夾
+   - 各模組下設立統一的子資料夾: data, exercises, notebooks, slides
+
+2. **教材層次化**: 
+   - notebooks目錄下的教材依照課程內容進行編號
+   - 從基礎到進階的漸進式知識建構
+
+3. **實務導向**: 
+   - 每個模組均包含exercises提供練習
+   - M6設置專案目錄用於整合性專題製作
+
+4. **補充資源區**: 
+   - 提供參考資料、進階主題與通用資料集
+   - 常用函數模組化於common目錄下便於重複利用
+
+5. **資料集管理**:
+   - 各模組教學所需的資料集放在模組內的data目錄
+   - 通用大型資料集集中在supplementary/datasets目錄
+ 
+--- 
+ 
+## 四、Scratchpad 
+ 
+> 此區為內部記錄區，請在進行每項任務時依序記錄任務目標、規劃步驟、進度更新與反思筆記，確保能夠隨時回顧與調整作業策略。 
+ 
+--- 
+ 
+## 五、軟體開發公司的角色與職責 
+ 
+- **產品經理 / 業務分析師**   
+  - 負責收集需求、定義使用者故事、規劃功能與分析市場趨勢。 
+ 
+- **系統架構師**   
+  - 負責決策技術路線、系統架構設計及模組間協作，確保系統擴展性與安全性。 
+ 
+- **開發工程師**   
+  - 包括前端、後端及全端工程師，依據需求撰寫程式、進行模組整合及系統優化。 
+ 
+- **測試工程師 / QA**   
+  - 制定測試計劃、設計與執行測試用例，確保產品質量並協助修正缺陷。 
+ 
+- **DevOps / 基礎建設工程師**   
+  - 負責持續整合、部署自動化、系統監控及運維，確保產品順利上線。 
+ 
+- **UX/UI 設計師**   
+  - 負責設計使用者介面與體驗，提升產品易用性與視覺吸引力。 
+ 
+- **專案經理**   
+  - 規劃專案進度、調配資源、協調跨部門合作，確保專案按期、按質完成。 
+ 
+--- 
+ 
+## 六、軟體開發流程 
+ 
+1. **需求分析**   
+   - 收集使用者需求及市場資訊。   
+   - 制定功能需求與技術規格。   
+   - 與產品經理、業務分析師與設計師密切合作。 
+ 
+2. **系統設計**   
+   - 定義系統整體架構、資料流程及模組間的交互。   
+   - 撰寫設計文件、介面規範與數據庫設計。   
+   - 考慮系統安全、可擴展性與容錯機制。 
+ 
+3. **開發實作**   
+   - 撰寫前後端程式、進行單元測試。   
+   - 進行代碼審查及版本控制管理（例如 Git）。   
+   - 實施持續整合與自動化部署流程。 
+ 
+4. **測試驗收**   
+   - 執行功能、效能及壓力測試。   
+   - 修正 Bug 並執行回歸測試。   
+   - 進行用戶測試與驗收確認。 
+ 
+5. **部署上線**   
+   - 部署至正式環境，設定環境配置與監控機制。   
+   - 監控系統運作，快速回應突發狀況。 
+ 
+6. **維運與改進**   
+   - 持續監控系統表現，收集用戶反饋。   
+   - 定期進行功能更新與優化。   
+   - 記錄學習與改進經驗，進行持續迭代。 
+ 
+--- 
+ 
+## 七、運算思維在開發流程中的應用 
+ 
+- **分解 (Decomposition)**   
+  - 將複雜問題拆解成更小、易解決的部分（例如：核心功能與輔助功能）。 
+ 
+- **抽象化 (Abstraction)**   
+  - 找出問題中的共通模式與本質，建立通用模組或解決方案，忽略不必要的細節。 
+ 
+- **模式識別 (Pattern Recognition)**   
+  - 從過往經驗中識別重複出現的問題與解決策略，快速制定最佳實踐。 
+ 
+- **演算法設計 (Algorithm Design)**   
+  - 根據需求設計高效演算法，並模擬、優化以提高系統效能與資源利用率。 
+ 
+--- 
+ 
+## 八、整合開發知識於 .cursorrules 
+ 
+- **經驗教訓 (Lessons)**   
+  - 記錄每次專案或模組開發中的問題、解決方案與改進建議。   
+  - 例如：建立標準化分支管理流程以處理版本控制衝突；強調單元測試在早期發現錯誤的重要性。 
+ 
+- **任務與進度管理 (Scratchpad)**   
+  - 使用 Scratchpad 作為內部記錄工具，詳細記錄任務目標、步驟與進度。   
+  - 定期回顧並更新任務狀態，促進團隊知識共享與協同成長。 
+ 
+- **自我省思與持續改進**   
+  - 每個專案階段結束後進行反思會議，總結成功經驗與不足之處。   
+  - 鼓勵創新思考，將可行方案記錄於本文件中，作為不斷迭代的知識庫。 
+ 
+--- 
+ 
+## 九、AI 快速 POC 開發指引 (附錄) 
+ 
+針對全球前 1% 頂尖碼農，但規劃能力較弱的情況，特別制定以下快速 POC 開發 SOP，融合大廠敏捷流程與快速驗證理念： 
+ 
+1. **問題定義與需求確認**   
+   - 明確核心目標，定義需驗證的假設。   
+   - 整理所有關鍵需求與使用案例，限定 POC 範圍。 
+ 
+2. **技術選型與架構規劃**   
+   - 快速選擇適用技術棧（語言、框架、資料庫）。   
+   - 繪製簡易架構圖，定義系統組件與 API 接口。   
+   - 辨識技術風險，提前規劃應對措施。 
+   - 構建開發資料夾結構。 
+ 
+3. **快速原型 (POC) 開發**   
+   - 建立最小可行產品 (MVP) 以展示核心功能。   
+   - 採用短迭代週期（1-2 天），不斷交付與調整。   
+   - 採用模組化設計，方便後續擴充與維護。 
+ 
+4. **測試與反饋驗證**   
+   - 撰寫單元與集成測試，驗證主要功能。   
+   - 進行內部或用戶驗證，收集反饋並記錄改進建議。   
+   - 建立基本監控與日志機制，追蹤原型表現。 
+ 
+5. **文件紀錄與知識分享**   
+   - 編寫簡明技術文檔與使用手冊，記錄設計與實作要點。   
+   - 記錄開發過程中的學習與問題解決經驗，作為團隊知識庫。   
+   - 定期舉辦內部技術分享，促進團隊共同成長。 
+ 
+6. **持續迭代與部署準備**   
+   - 根據反饋迅速修正與調整原型。   
+   - 定期進行代碼審查，確保程式品質。   
+   - 規劃初步部署流程與基本運維監控，確保系統穩定運行。 
+ 
+--- 
+ 
+## 十、套件與版本紀錄守則 
+ 
+- **版本資訊紀錄**   
+  - 每次導入新套件或更新現有套件時，請立即將套件名稱及其版本資訊記錄於本文件專門的套件清單區塊中。   
+  - 建議建立一個獨立區塊或文件（例如 `package_versions.md`），並在 .cursorrules 中註明參考位置，以便於後續維運與排查。 
+ 
+- **持續更新**   
+  - 在每次進行環境建置、依賴管理或部署前，檢查並更新相關套件版本，確保所有版本資訊保持最新。   
+  - 當系統規模擴大導致依賴關係複雜時，透過自動化工具（如 `pip freeze`、`npm list` 等）定期生成版本清單，並將結果納入版本控制系統。 
+ 
+- **跨團隊協作**   
+  - 所有團隊成員在引入或更新套件時，均應遵循此守則，並在提交說明中標明套件變更情況，方便 DevOps 及維運團隊追蹤歷史變更。 
+ 
+--- 
+ 
+## 十一、版本相依性與官方文件查詢守則 
+ 
+- **版本相依性查詢**   
+  - 每次引入新套件或更新現有套件前，必須查閱該套件官方文件，確認相依性與版本要求。   
+  - 利用 agent 機制自動搜尋並比對官方文件，確保所有依賴資訊正確且符合最新標準。   
+  - 記錄套件名稱、版本、相依資訊與查詢來源，以便於後續追蹤與排查問題。 
+ 
+- **常見 AI 開發官方文件網址**   
+  - **Python 官方網站**: [https://www.python.org/](https://www.python.org/)   
+  - **TensorFlow**: [https://www.tensorflow.org/](https://www.tensorflow.org/)   
+  - **PyTorch**: [https://pytorch.org/](https://pytorch.org/)   
+  - **Hugging Face Transformers**: [https://huggingface.co/transformers/](https://huggingface.co/transformers/)   
+  - **OpenAI API 文件**: [https://platform.openai.com/docs/](https://platform.openai.com/docs/)   
+  - **DeepSpeed**: [https://www.deepspeed.ai/](https://www.deepspeed.ai/)   
+  - **NVIDIA CUDA**: [https://developer.nvidia.com/cuda-zone](https://developer.nvidia.com/cuda-zone)   
+  - **Scikit-learn**: [https://scikit-learn.org/stable/documentation.html](https://scikit-learn.org/stable/documentation.html)   
+  - **JAX**: [https://jax.readthedocs.io/en/latest/](https://jax.readthedocs.io/en/latest/)   
+  - **spaCy**: [https://spacy.io/usage](https://spacy.io/usage)   
+  - **Fastai**: [https://docs.fast.ai/](https://docs.fast.ai/)   
+  - **MXNet**: [https://mxnet.apache.org/versions](https://mxnet.apache.org/versions)   
+  - **LightGBM**: [https://lightgbm.readthedocs.io/en/latest/](https://lightgbm.readthedocs.io/en/latest/)   
+  - **LangChain**: [https://python.langchain.com/en/latest/](https://python.langchain.com/en/latest/)   
+  - **Crewai**: [https://crewai.com/](https://crewai.com/) 
+ 
+--- 
+ 
+## 結語 
+ 
+本 .cursorrules 文件整合了大廠開發流程、運算思維、快速 POC 開發 SOP、持續學習與自我省思，以及套件與版本管理的全方位守則。所有團隊成員及 AI 輔助開發系統應依據本指引進行工作，並在每次任務中記錄與分享經驗，從而不斷完善流程、提升產品品質與技術水準，同時確保系統依賴資訊的透明性與可追蹤性。

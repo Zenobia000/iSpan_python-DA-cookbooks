@@ -1,0 +1,11 @@
+id,question,option_a,option_b,option_c,answer,category,difficulty,knowledge_point,question_type,chapter
+1,Python 是什麼語言？,編譯型語言,直譯型語言,機器語言,b,基礎概念,簡單,Python 語言特性,概念題,第一章
+2,NumPy 用來做什麼？,圖片處理,數值計算,UI 設計,b,NumPy,簡單,NumPy 基本概念,概念題,第二章
+3,Pandas 的 DataFrame 是什麼？,資料庫表格,二維資料結構,一維資料結構,b,Pandas,中等,DataFrame 概念,概念題,第三章
+4,Matplotlib 主要用於？,資料處理,資料視覺化,資料分析,b,Matplotlib,簡單,Matplotlib 用途,概念題,第四章
+5,Seaborn 是基於哪個套件？,Pandas,Matplotlib,NumPy,b,Seaborn,中等,Seaborn 基礎,概念題,第四章
+6,Python 的 list 和 tuple 主要區別？,可變性,記憶體使用,效能,a,基礎概念,中等,資料結構,比較題,第一章
+7,NumPy 的 array 和 Python list 主要區別？,記憶體使用,運算效能,資料型態,b,NumPy,中等,NumPy 效能,比較題,第二章
+8,Pandas 的 loc 和 iloc 主要區別？,索引方式,效能,記憶體使用,a,Pandas,中等,資料選取,比較題,第三章
+9,Matplotlib 的 figure 和 axes 關係？,父子關係,獨立物件,相同物件,a,Matplotlib,中等,圖形結構,概念題,第四章
+10,Seaborn 的 distplot 和 histplot 區別？,功能重疊,不同用途,效能差異,b,Seaborn,中等,分布圖,比較題,第四章
