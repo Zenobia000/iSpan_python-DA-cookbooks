@@ -15,9 +15,10 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import statistics
 import json
+import csv
 
 # --- 設定 ---
-EXAM_DURATION_MIN = 30  # 測驗時長
+EXAM_DURATION_MIN = 15  # 測驗時長
 
 # --- 初始化會話狀態 ---
 if 'is_test_started' not in st.session_state:
@@ -335,38 +336,44 @@ def show_effect(effect_name):
 
 # --- 儲存結果到CSV ---
 def save_result(name, class_name, score, total, responses):
-    """保存測驗結果到CSV文件"""
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
-    # 計算正確率
-    correct_rate = round(score / total * 100, 1) if total > 0 else 0
-    
-    # 準備基本資料
-    data = {
-        "timestamp": timestamp,
-        "name": name,
-        "class": class_name,
-        "score": score,
-        "total": total,
-        "correct_rate": correct_rate
-    }
-    
-    # 添加每題的回答 (即使是空白答案也記錄)
-    questions = load_questions()
-    for _, row in questions.iterrows():
-        question_id = row['id']
-        # 獲取用戶的回答，如果未回答則記錄為空字符串
-        answer = responses.get(question_id, "") 
-        data[f"q{question_id}"] = answer
-    
-    # 檢查CSV文件是否存在
-    file_exists = os.path.isfile("result_log.csv")
-    
-    # 寫入CSV
-    with open("result_log.csv", mode='a', newline='', encoding='utf-8') as file:
-        writer = pd.DataFrame([data]).to_csv(file, header=not file_exists, index=False)
-    
-    return correct_rate  # 返回正確率
+    """保存測驗結果"""
+    try:
+        # 準備數據
+        result_data = {
+            'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            'name': name,
+            'class': class_name,
+            'score': score,
+            'total': total,
+            'correct_rate': round((score/total)*100, 2) if total > 0 else 0
+        }
+        
+        # 添加每題的答案
+        for qid, ans in responses.items():
+            result_data[f'q{qid}'] = ans
+            
+        # 轉換為 DataFrame
+        result_df = pd.DataFrame([result_data])
+        
+        # 如果文件存在，則追加；否則創建新文件
+        mode = 'a' if os.path.exists('result_log.csv') else 'w'
+        header = not os.path.exists('result_log.csv')
+        
+        # 使用相應的參數寫入 CSV
+        result_df.to_csv('result_log.csv', 
+                        mode=mode,
+                        header=header,
+                        index=False,
+                        encoding='utf-8',
+                        quoting=csv.QUOTE_ALL,
+                        escapechar='\\',
+                        doublequote=True)
+        
+        return result_data['correct_rate']
+        
+    except Exception as e:
+        print(f"保存結果時出錯: {str(e)}")
+        return 0
 
 # --- 取得題目統計 ---
 def get_question_statistics():
@@ -663,7 +670,21 @@ def main():
             # 顯示答題詳情
             st.subheader("答題詳情")
             for result in results:
-                with st.expander(f"題目 {result['id']}: {result['question']}"):
+                with st.expander(f"題目 {result['id']}:"):
+                    question_text = result['question']
+                    
+                    # 檢查是否包含程式碼區塊
+                    if '\n' in question_text:
+                        # 分離題目文字和程式碼區塊
+                        parts = question_text.split('\n\n', 1)
+                        if len(parts) == 2:
+                            st.write(f"**題目:** {parts[0]}")
+                            st.code(parts[1], language='python')
+                        else:
+                            st.write(f"**題目:** {question_text}")
+                    else:
+                        st.write(f"**題目:** {question_text}")
+                    
                     if result['is_correct']:
                         st.success("✅ 回答正確")
                     else:
@@ -932,17 +953,24 @@ def main():
                     
                     # 添加難度標記
                     difficulty_label = difficulty_symbols.get(difficulty, f"【{difficulty}】")
-                    question_text = f"Q{qid}: {difficulty_label} {question['question'][:25]}..."
+                    
+                    # 處理題目文字，如果包含程式碼區塊，只顯示題目部分
+                    question_text = question['question']
+                    if '\n' in question_text:
+                        question_text = question_text.split('\n\n', 1)[0]
+                    
+                    question_display = f"Q{qid}: {difficulty_label} {question_text[:25]}..."
                     
                     difficulty_groups[difficulty]["ids"].append(qid)
-                    difficulty_groups[difficulty]["y"].append(question_text)
+                    difficulty_groups[difficulty]["y"].append(question_display)
                     difficulty_groups[difficulty]["x"].append(class_correct_rates.get(qid, 0))
                     
-                    # 創建詳細的懸停文字
+                    # 創建詳細的懸停文字，同樣處理程式碼區塊
                     hover_text = (f"題號: Q{qid}<br>"
                                  f"難度: {difficulty}<br>"
                                  f"正確率: {class_correct_rates.get(qid, 0):.1f}%<br>"
-                                 f"題目: {question['question']}")
+                                 f"題目: {question_text}")
+                    
                     difficulty_groups[difficulty]["hover"].append(hover_text)
                 
                 # 按難度分類的列表
@@ -1167,7 +1195,19 @@ def main():
 
     # 顯示題目
     for i, row in questions.iterrows():
-        st.subheader(f"Q{i+1}. {row['question']}")
+        question_text = row['question']
+        
+        # 檢查是否包含程式碼區塊（通過檢查是否有換行符號）
+        if '\n' in question_text:
+            # 分離題目文字和程式碼區塊
+            parts = question_text.split('\n\n', 1)
+            if len(parts) == 2:
+                st.subheader(f"Q{i+1}. {parts[0]}")
+                st.code(parts[1], language='python')
+            else:
+                st.subheader(f"Q{i+1}. {question_text}")
+        else:
+            st.subheader(f"Q{i+1}. {question_text}")
         
         # 準備選項列表，包含一個空選項
         options = [
@@ -1292,24 +1332,17 @@ def main():
 def load_all_results():
     """讀取所有學生的測驗結果"""
     try:
-        if not os.path.exists("result_log.csv"):
-            return pd.DataFrame()
-            
-        try:
-            df = pd.read_csv("result_log.csv")
-            if df.empty:
-                return pd.DataFrame()
-            
-            # 確保答案欄位為字符串類型
-            question_cols = [col for col in df.columns if col.startswith('q')]
-            for col in question_cols:
-                df[col] = df[col].astype(str).str.strip().str.lower()
-            
-            return df
-        except pd.errors.EmptyDataError:
-            return pd.DataFrame()
+        # 使用 quoting 參數來正確處理包含換行符的欄位
+        results_df = pd.read_csv('result_log.csv', 
+                               encoding='utf-8',
+                               quoting=csv.QUOTE_ALL,  # 使用引號包住所有欄位
+                               escapechar='\\',        # 使用反斜線作為跳脫字元
+                               doublequote=True)       # 使用雙引號處理引號
+        return results_df
+    except FileNotFoundError:
+        return pd.DataFrame()
     except Exception as e:
-        st.error(f"讀取結果數據時出錯: {str(e)}")
+        print(f"讀取結果數據時出錯: {str(e)}")
         return pd.DataFrame()
 
 def get_statistics_summary(results_df, current_score=None):

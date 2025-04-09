@@ -1,11 +1,141 @@
-id,question,option_a,option_b,option_c,answer,category,difficulty,knowledge_point,question_type,chapter
-1,Python 是什麼語言？,編譯型語言,直譯型語言,機器語言,b,基礎概念,簡單,Python 語言特性,概念題,第一章
-2,NumPy 用來做什麼？,圖片處理,數值計算,UI 設計,b,NumPy,簡單,NumPy 基本概念,概念題,第二章
-3,Pandas 的 DataFrame 是什麼？,資料庫表格,二維資料結構,一維資料結構,b,Pandas,中等,DataFrame 概念,概念題,第三章
-4,Matplotlib 主要用於？,資料處理,資料視覺化,資料分析,b,Matplotlib,簡單,Matplotlib 用途,概念題,第四章
-5,Seaborn 是基於哪個套件？,Pandas,Matplotlib,NumPy,b,Seaborn,中等,Seaborn 基礎,概念題,第四章
-6,Python 的 list 和 tuple 主要區別？,可變性,記憶體使用,效能,a,基礎概念,中等,資料結構,比較題,第一章
-7,NumPy 的 array 和 Python list 主要區別？,記憶體使用,運算效能,資料型態,b,NumPy,中等,NumPy 效能,比較題,第二章
-8,Pandas 的 loc 和 iloc 主要區別？,索引方式,效能,記憶體使用,a,Pandas,中等,資料選取,比較題,第三章
-9,Matplotlib 的 figure 和 axes 關係？,父子關係,獨立物件,相同物件,a,Matplotlib,中等,圖形結構,概念題,第四章
-10,Seaborn 的 distplot 和 histplot 區別？,功能重疊,不同用途,效能差異,b,Seaborn,中等,分布圖,比較題,第四章
+﻿id,question,option_a,option_b,option_c,answer,category,difficulty,knowledge_point,question_type,chapter
+1,在Python中，以下哪種數據類型是不可變的(immutable)？,list,dictionary,tuple,c,Python基礎,簡單,數據類型特性,概念題,基本數據類型
+2,以下哪個是Python中用於註釋多行代碼的正確語法？,/* 註釋內容 */,""""""" 註釋內容 """"""",// 註釋內容,b,Python基礎,簡單,語法基礎,語法題,基礎語法
+3,NumPy庫的主要數據結構是什麼？,DataFrame,ndarray,Series,b,NumPy,簡單,NumPy基本概念,概念題,NumPy基礎
+4,以下哪個函數用於創建NumPy數組？,np.array(),np.matrix(),np.dataframe(),a,NumPy,簡單,NumPy創建數組,函數應用題,NumPy基礎
+5,在Python中，以下哪個運算符用於取餘數？,/,//,%,c,Python基礎,簡單,運算符,語法題,運算符與表達式
+6,以下哪個不是Python的合法變量名？,my_var,_count,2data,c,Python基礎,簡單,變量命名規則,語法題,變量與數據類型
+7,NumPy中，以下哪個函數用於生成0到1之間的隨機數？,np.random.rand(),np.random.randn(),np.random.randint(),a,NumPy,簡單,NumPy隨機數生成,函數應用題,NumPy隨機數
+8,在Python中，以下哪個語句用於導入NumPy庫並使用np作為別名？,import numpy,import numpy as np,from numpy import *,b,Python基礎,簡單,模塊導入,語法題,模塊與包
+9,以下哪個NumPy函數用於計算數組的平均值？,np.average(),np.mean(),np.median(),b,NumPy,簡單,NumPy統計函數,函數應用題,NumPy統計操作
+10,在Python中，以下哪個語句會產生錯誤？,x = 1 + 2,"x = 1 + ""2""","x = ""1"" + ""2""",b,Python基礎,簡單,數據類型操作,語法題,基本數據類型
+11,"以下代碼的輸出是什麼？
+
+x = [1, 2, 3]
+y = x
+y.append(4)
+print(x)","[1, 2, 3]","[1, 2, 3, 4]","[1, 2, 3, [4]]",b,Python基礎,中等,可變對象引用,代碼執行題,對象與引用
+12,"以下NumPy代碼的輸出是什麼？
+
+import numpy as np
+a = np.array([1, 2, 3])
+print(a * 2)","[1, 2, 3, 1, 2, 3]","[2, 4, 6]","[1, 1, 2, 2, 3, 3]",b,NumPy,中等,NumPy向量化運算,代碼執行題,NumPy運算
+13,"關於Python列表推導式，以下代碼的輸出是什麼？
+
+result = [x**2 for x in range(5) if x % 2 == 0]
+print(result)","[0, 4, 16]","[0, 1, 4, 9, 16]","[0, 2, 4]",a,Python基礎,中等,列表推導式,代碼執行題,高級數據結構
+14,在NumPy中，以下哪個操作會改變原始數組的形狀而不創建新數組？,"np.reshape(a, (2, 3))","a.reshape(2, 3)","a.shape = (2, 3)",c,NumPy,中等,NumPy形狀操作,概念題,NumPy數組操作
+15,"以下Python代碼的輸出是什麼？
+
+def func(a, b=[]):
+    b.append(a)
+    return b
+
+print(func(1))
+print(func(2))",[1] [2],"[1] [1, 2]","[1, 2] [1, 2]",b,Python基礎,中等,函數默認參數陷阱,代碼執行題,函數進階
+16,在NumPy中，以下哪個函數用於沿指定軸連接數組？,np.append(),np.concatenate(),np.stack(),b,NumPy,中等,NumPy數組連接,函數應用題,NumPy數組操作
+17,"以下代碼的輸出是什麼？
+
+import numpy as np
+a = np.array([1, 2, 3, 4])
+b = a[1:3]
+b[0] = 10
+print(a)","[1, 2, 3, 4]","[1, 10, 3, 4]","[1, 10, 10, 4]",b,NumPy,中等,NumPy視圖與副本,代碼執行題,NumPy數據訪問
+18,在Python中，以下哪個是裝飾器的正確用法？,"@decorator
+def func():
+    pass","def func():
+    @decorator
+    pass","def func():
+    pass
+@decorator(func)",a,Python基礎,中等,裝飾器,語法題,函數進階
+19,"以下NumPy代碼的輸出是什麼？
+
+import numpy as np
+a = np.array([[1, 2], [3, 4]])
+print(a.sum(axis=0))","[3, 7]","[4, 6]",10,b,NumPy,中等,NumPy軸操作,代碼執行題,NumPy統計操作
+20,以下關於Python生成器表達式和列表推導式的描述，哪個是正確的？,生成器表達式使用[]，列表推導式使用(),生成器表達式使用()，列表推導式使用[],兩者語法相同，都使用[],b,Python基礎,中等,生成器與列表推導式,概念題,高級數據結構
+21,"以下Python代碼的輸出是什麼？
+
+class A:
+    x = 1
+    
+class B(A):
+    pass
+    
+class C(A):
+    x = 2
+    
+class D(B, C):
+    pass
+    
+print(D.x)",1,2,錯誤,b,Python基礎,困難,多重繼承與MRO,代碼執行題,面向對象高級
+22,"以下NumPy代碼的輸出是什麼？
+
+import numpy as np
+a = np.array([1, 2, 3])
+b = np.array([4, 5, 6])
+c = a @ b
+print(c)","[4, 10, 18]",32,錯誤,b,NumPy,困難,NumPy矩陣運算,代碼執行題,NumPy線性代數
+23,"在NumPy中，以下代碼會產生什麼結果？
+
+import numpy as np
+a = np.zeros((3, 3))
+b = a.view()
+b[0, 0] = 99
+c = a.copy()
+c[1, 1] = 88
+print(a[0, 0], a[1, 1])",0.0 0.0,99.0 0.0,99.0 88.0,b,NumPy,困難,NumPy視圖與副本,代碼執行題,NumPy數據訪問
+24,"以下Python代碼的輸出是什麼？
+
+def make_counter():
+    count = 0
+    def counter():
+        nonlocal count
+        count += 1
+        return count
+    return counter
+
+c1 = make_counter()
+c2 = make_counter()
+print(c1(), c1(), c2())",1 2 1,1 1 1,1 2 3,a,Python基礎,困難,閉包與作用域,代碼執行題,函數進階
+25,"以下NumPy代碼的輸出是什麼？
+
+import numpy as np
+a = np.array([1, 2, 3, 4])
+b = a.reshape(2, 2)
+c = b.T
+print(c[0, 1])",1,2,3,c,NumPy,困難,NumPy形狀轉換與轉置,代碼執行題,NumPy數組操作
+26,"以下Python代碼的輸出是什麼？
+
+class Meta(type):
+    def __new__(cls, name, bases, dct):
+        dct[""x""] = 42
+        return super().__new__(cls, name, bases, dct)
+
+class A(metaclass=Meta):
+    pass
+
+print(A.x)",None,42,錯誤,b,Python基礎,困難,元類,代碼執行題,面向對象高級
+27,"以下NumPy代碼的輸出是什麼？
+
+import numpy as np
+a = np.array([1, 2, 3, 4])
+mask = np.array([True, False, True, False])
+print(a[mask].sum())",4,6,10,a,NumPy,困難,NumPy布爾索引,代碼執行題,NumPy索引與切片
+28,"以下Python代碼的輸出是什麼？
+
+from functools import lru_cache
+
+@lru_cache(maxsize=None)
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+print(fib(30))",832040,832041,832042,a,Python基礎,困難,記憶化與裝飾器,代碼執行題,函數進階
+29,"以下NumPy代碼的輸出是什麼？
+
+import numpy as np
+a = np.arange(10)
+print(np.where((a > 5) & (a < 8))[0])","[6, 7]","[6, 7, 8]",[6 7],c,NumPy,困難,NumPy條件索引,代碼執行題,NumPy索引與切片
+30,以下關於NumPy的廣播機制(Broadcasting)的描述，哪個是錯誤的？,廣播允許不同形狀的數組進行算術運算,廣播總是從尾部維度開始比較,廣播要求兩個數組的維度必須完全相同,c,NumPy,困難,NumPy廣播機制,概念題,NumPy高級特性
