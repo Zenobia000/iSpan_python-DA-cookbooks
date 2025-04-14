@@ -177,42 +177,42 @@ def export_results_to_excel(results, name, class_name, score, total):
 def get_encouragement(correct_rate):
     if correct_rate >= 90:
         messages = [
-            "太棒了！你的表現非常出色！",
-            "傑出的成績！你真的很有天賦！",
-            "完美！繼續保持這種水平！",
-            "令人驚嘆的表現！你做得非常好！"
+            "🌟 太棒了！你的表現非常出色！",
+            "🎯 傑出的成績！你真的很有天賦！",
+            "💫 完美！繼續保持這種水平！",
+            "🏆 令人驚嘆的表現！你做得非常好！"
         ]
-        effect = "balloons"
+        effect = "celebration"
     elif correct_rate >= 80:
         messages = [
-            "很優秀的成績！繼續保持！",
-            "出色的表現！你很棒！",
-            "很好的掌握！再接再厲！",
-            "優異的結果！你的努力值得讚賞！"
+            "✨ 很優秀的成績！繼續保持！",
+            "🌈 出色的表現！你很棒！",
+            "🎨 很好的掌握！再接再厲！",
+            "🎉 優異的結果！你的努力值得讚賞！"
         ]
-        effect = "snow"
+        effect = "fireworks"
     elif correct_rate >= 70:
         messages = [
-            "很好的成績！繼續努力！",
-            "做得好！你的努力得到了回報！",
-            "優秀的表現！再接再厲！",
-            "不錯的成績！你的潛力很大！"
+            "👏 很好的成績！繼續努力！",
+            "💪 做得好！你的努力得到了回報！",
+            "🌟 優秀的表現！再接再厲！",
+            "🎯 不錯的成績！你的潛力很大！"
         ]
         effect = "confetti"
     elif correct_rate >= 60:
         messages = [
-            "還不錯！但還有進步空間！",
-            "繼續加油！你可以做得更好！",
-            "及格了！請再接再厲！",
-            "有些進步，但仍需努力！"
+            "💡 還不錯！但還有進步空間！",
+            "📚 繼續加油！你可以做得更好！",
+            "🎯 及格了！請再接再厲！",
+            "💪 有些進步，但仍需努力！"
         ]
         effect = "stars"
     else:
         messages = [
-            "不要氣餒，失敗是成功之母！",
-            "相信自己，下次一定會更好！",
-            "勇於面對困難，持續學習！",
-            "這只是開始，繼續努力！"
+            "🌱 不要氣餒，失敗是成功之母！",
+            "💪 相信自己，下次一定會更好！",
+            "📚 勇於面對困難，持續學習！",
+            "🎯 這只是開始，繼續努力！"
         ]
         effect = "rain"
     
@@ -220,14 +220,94 @@ def get_encouragement(correct_rate):
 
 # --- 顯示特效 ---
 def show_effect(effect_name):
-    if effect_name == "balloons":
+    if effect_name == "celebration":
+        # 90分以上：金色煙火 + 彩帶 + 氣球
         st.balloons()
-    elif effect_name == "snow":
-        st.snow()
-    elif effect_name == "confetti":
-        # 自製五彩紙屑效果
         st.markdown("""
         <style>
+        @keyframes celebration {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        .celebration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #FFD700, #FFA500);
+            animation: celebration 1.5s ease-out infinite;
+        }
+        .ribbon {
+            position: absolute;
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(45deg, #FF0000, #00FF00, #0000FF);
+            animation: celebration 2s ease-out infinite;
+        }
+        </style>
+        <div class="celebration">
+            <div class="firework" style="left: 20%; top: 30%;"></div>
+            <div class="firework" style="left: 80%; top: 40%;"></div>
+            <div class="firework" style="left: 40%; top: 60%;"></div>
+            <div class="ribbon" style="left: 50%; top: 20%;"></div>
+            <div class="ribbon" style="left: 30%; top: 70%;"></div>
+            <div class="ribbon" style="left: 70%; top: 50%;"></div>
+        </div>
+        """, unsafe_allow_html=True)
+    elif effect_name == "fireworks":
+        # 80-89分：彩色煙火
+        st.snow()
+        st.markdown("""
+        <style>
+        @keyframes firework {
+            0% { transform: translateY(100vh); opacity: 1; }
+            50% { transform: translateY(50vh); opacity: 1; }
+            100% { transform: translateY(0); opacity: 0; }
+        }
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .spark {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: firework 2s ease-out infinite;
+        }
+        </style>
+        <div class="fireworks">
+            <div class="spark" style="left: 20%; background: #FF0000;"></div>
+            <div class="spark" style="left: 40%; background: #00FF00;"></div>
+            <div class="spark" style="left: 60%; background: #0000FF;"></div>
+            <div class="spark" style="left: 80%; background: #FFFF00;"></div>
+            <div class="spark" style="left: 30%; background: #FF00FF;"></div>
+            <div class="spark" style="left: 70%; background: #00FFFF;"></div>
+        </div>
+        """, unsafe_allow_html=True)
+    elif effect_name == "confetti":
+        # 70-79分：彩色紙屑
+        st.markdown("""
+        <style>
+        @keyframes confetti-fall {
+            0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100%) rotate(360deg); opacity: 0; }
+        }
         .confetti {
             position: fixed;
             top: 0;
@@ -236,32 +316,35 @@ def show_effect(effect_name):
             height: 100%;
             pointer-events: none;
             z-index: 1000;
-            animation: confetti-fall 5s linear infinite;
         }
-        @keyframes confetti-fall {
-            0% { transform: translateY(-10%); opacity: 1; }
-            100% { transform: translateY(100%); opacity: 0; }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            animation: confetti-fall 4s linear infinite;
         }
         </style>
         <div class="confetti">
-            <svg width="100%" height="100%" viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="300" cy="300" r="4" fill="#FF5252" opacity="0.7"/>
-                <circle cx="320" cy="150" r="3" fill="#2196F3" opacity="0.7"/>
-                <circle cx="190" cy="250" r="5" fill="#FFC107" opacity="0.7"/>
-                <circle cx="370" cy="280" r="4" fill="#4CAF50" opacity="0.7"/>
-                <circle cx="250" cy="180" r="3" fill="#9C27B0" opacity="0.7"/>
-                <rect x="280" y="220" width="8" height="3" fill="#FF9800" opacity="0.7"/>
-                <rect x="350" y="150" width="6" height="4" fill="#2196F3" opacity="0.7"/>
-                <rect x="400" y="300" width="5" height="5" fill="#4CAF50" opacity="0.7"/>
-                <rect x="200" y="350" width="7" height="3" fill="#E91E63" opacity="0.7"/>
-                <rect x="100" y="200" width="5" height="6" fill="#9C27B0" opacity="0.7"/>
-            </svg>
+            <div class="confetti-piece" style="left: 10%; background: #FF69B4; animation-delay: 0s;"></div>
+            <div class="confetti-piece" style="left: 20%; background: #87CEEB; animation-delay: 0.5s;"></div>
+            <div class="confetti-piece" style="left: 30%; background: #98FB98; animation-delay: 1s;"></div>
+            <div class="confetti-piece" style="left: 40%; background: #DDA0DD; animation-delay: 1.5s;"></div>
+            <div class="confetti-piece" style="left: 50%; background: #F0E68C; animation-delay: 2s;"></div>
+            <div class="confetti-piece" style="left: 60%; background: #FF69B4; animation-delay: 2.5s;"></div>
+            <div class="confetti-piece" style="left: 70%; background: #87CEEB; animation-delay: 3s;"></div>
+            <div class="confetti-piece" style="left: 80%; background: #98FB98; animation-delay: 3.5s;"></div>
+            <div class="confetti-piece" style="left: 90%; background: #DDA0DD; animation-delay: 4s;"></div>
         </div>
         """, unsafe_allow_html=True)
     elif effect_name == "stars":
-        # 自製星星閃爍效果
+        # 60-69分：閃爍星星
         st.markdown("""
         <style>
+        @keyframes twinkle {
+            0% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.2); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.2; }
+        }
         .stars {
             position: fixed;
             top: 0;
@@ -270,36 +353,38 @@ def show_effect(effect_name):
             height: 100%;
             pointer-events: none;
             z-index: 1000;
+            background: linear-gradient(to bottom, #000033, #000066);
+            opacity: 0.3;
         }
         .star {
             position: absolute;
-            background-color: white;
-            border-radius: 50%;
+            background: #FFFFFF;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             animation: twinkle 2s infinite;
-        }
-        @keyframes twinkle {
-            0% { opacity: 0.2; }
-            50% { opacity: 1; }
-            100% { opacity: 0.2; }
         }
         </style>
         <div class="stars">
-            <div class="star" style="top: 20%; left: 15%; width: 3px; height: 3px; animation-delay: 0s;"></div>
-            <div class="star" style="top: 30%; left: 30%; width: 2px; height: 2px; animation-delay: 0.4s;"></div>
-            <div class="star" style="top: 25%; left: 60%; width: 4px; height: 4px; animation-delay: 0.8s;"></div>
-            <div class="star" style="top: 10%; left: 40%; width: 3px; height: 3px; animation-delay: 1.2s;"></div>
-            <div class="star" style="top: 40%; left: 25%; width: 2px; height: 2px; animation-delay: 1.6s;"></div>
-            <div class="star" style="top: 65%; left: 75%; width: 3px; height: 3px; animation-delay: 0.2s;"></div>
-            <div class="star" style="top: 50%; left: 80%; width: 4px; height: 4px; animation-delay: 0.6s;"></div>
-            <div class="star" style="top: 70%; left: 45%; width: 2px; height: 2px; animation-delay: 1.0s;"></div>
-            <div class="star" style="top: 85%; left: 20%; width: 3px; height: 3px; animation-delay: 1.4s;"></div>
-            <div class="star" style="top: 90%; left: 65%; width: 2px; height: 2px; animation-delay: 1.8s;"></div>
+            <div class="star" style="top: 20%; left: 15%; width: 15px; height: 15px; animation-delay: 0s;"></div>
+            <div class="star" style="top: 30%; left: 30%; width: 10px; height: 10px; animation-delay: 0.4s;"></div>
+            <div class="star" style="top: 25%; left: 60%; width: 20px; height: 20px; animation-delay: 0.8s;"></div>
+            <div class="star" style="top: 10%; left: 40%; width: 15px; height: 15px; animation-delay: 1.2s;"></div>
+            <div class="star" style="top: 40%; left: 25%; width: 10px; height: 10px; animation-delay: 1.6s;"></div>
+            <div class="star" style="top: 65%; left: 75%; width: 15px; height: 15px; animation-delay: 0.2s;"></div>
+            <div class="star" style="top: 50%; left: 80%; width: 20px; height: 20px; animation-delay: 0.6s;"></div>
+            <div class="star" style="top: 70%; left: 45%; width: 10px; height: 10px; animation-delay: 1.0s;"></div>
+            <div class="star" style="top: 85%; left: 20%; width: 15px; height: 15px; animation-delay: 1.4s;"></div>
+            <div class="star" style="top: 90%; left: 65%; width: 10px; height: 10px; animation-delay: 1.8s;"></div>
         </div>
         """, unsafe_allow_html=True)
     elif effect_name == "rain":
-        # 自製雨滴效果
+        # 60分以下：藍色雨滴
         st.markdown("""
         <style>
+        @keyframes rain-fall {
+            0% { transform: translateY(-100%); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0.3; }
+        }
         .rain {
             position: fixed;
             top: 0;
@@ -308,17 +393,14 @@ def show_effect(effect_name):
             height: 100%;
             pointer-events: none;
             z-index: 1000;
+            background: linear-gradient(to bottom, #E8F1F2, #B3E0F2);
+            opacity: 0.2;
         }
         .drop {
             position: absolute;
             width: 2px;
-            background: linear-gradient(to bottom, rgba(13, 71, 161, 0), rgba(13, 71, 161, 0.5));
-            animation: fall linear infinite;
-        }
-        @keyframes fall {
-            0% { transform: translateY(-100px); opacity: 0; }
-            10% { opacity: 1; }
-            100% { transform: translateY(100vh); opacity: 0.5; }
+            background: linear-gradient(to bottom, #4FC3F7, #0288D1);
+            animation: rain-fall linear infinite;
         }
         </style>
         <div class="rain">
@@ -338,6 +420,10 @@ def show_effect(effect_name):
 def save_result(name, class_name, score, total, responses):
     """保存測驗結果"""
     try:
+        # 讀取題庫以獲取題目總數
+        questions = load_questions()
+        total_questions = len(questions)
+        
         # 準備數據
         result_data = {
             'timestamp': datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -348,9 +434,9 @@ def save_result(name, class_name, score, total, responses):
             'correct_rate': round((score/total)*100, 2) if total > 0 else 0
         }
         
-        # 添加每題的答案
-        for qid, ans in responses.items():
-            result_data[f'q{qid}'] = ans
+        # 為所有題目添加答案欄位，未作答的設為空字串
+        for i in range(1, total_questions + 1):
+            result_data[f'q{i}'] = responses.get(i, '')
             
         # 轉換為 DataFrame
         result_df = pd.DataFrame([result_data])
@@ -669,39 +755,44 @@ def main():
             
             # 顯示答題詳情
             st.subheader("答題詳情")
-            for result in results:
-                with st.expander(f"題目 {result['id']}:"):
-                    question_text = result['question']
+            
+            # 遍歷每個題目
+            for i, row in questions.iterrows():
+                question_id = row['id']
+                question_text = row['question']
+                correct_answer = row['answer']
+                user_answer = st.session_state.responses.get(question_id, '')
+                
+                # 判斷答題狀況
+                if user_answer == '':
+                    status_text = "🔘 未作答"
+                elif user_answer == correct_answer:
+                    status_text = "✅ 正確"
+                else:
+                    status_text = "❌ 錯誤"
+                
+                # 處理題目文字，分割程式碼區塊
+                question_parts = question_text.split('\n\n')
+                question_title = question_parts[0]
+                
+                # 創建題目標題，包含狀態標記
+                title = f"題目{question_id}: {question_title} ({status_text})"
+                
+                # 使用expander顯示詳細信息
+                with st.expander(title):
+                    # 如果有程式碼區塊，顯示它
+                    if len(question_parts) > 1:
+                        st.code(question_parts[1], language='python')
                     
-                    # 檢查是否包含程式碼區塊
-                    if '\n' in question_text:
-                        # 分離題目文字和程式碼區塊
-                        parts = question_text.split('\n\n', 1)
-                        if len(parts) == 2:
-                            st.write(f"**題目:** {parts[0]}")
-                            st.code(parts[1], language='python')
-                        else:
-                            st.write(f"**題目:** {question_text}")
-                    else:
-                        st.write(f"**題目:** {question_text}")
+                    # 顯示用戶答案和正確答案
+                    st.write(f"你的答案: {user_answer if user_answer else '未作答'}")
+                    st.write(f"正確答案: {correct_answer}")
                     
-                    if result['is_correct']:
-                        st.success("✅ 回答正確")
-                    else:
-                        st.error("❌ 回答錯誤" if result['selected'] else "⚠️ 未作答")
-                    
-                    if result['selected']:
-                        st.write("**您的答案:** " + f"{result['selected']}. " + 
-                             (result['option_a'] if result['selected'] == 'a' else
-                              result['option_b'] if result['selected'] == 'b' else
-                              result['option_c'] if result['selected'] == 'c' else "未知選項"))
-                    else:
-                        st.write("**您的答案:** 未作答")
-                    
-                    st.write("**正確答案:** " + f"{result['correct']}. " + 
-                             (result['option_a'] if result['correct'] == 'a' else
-                              result['option_b'] if result['correct'] == 'b' else
-                              result['option_c'] if result['correct'] == 'c' else "錯誤"))
+                    # 顯示選項
+                    st.write("選項:")
+                    st.write(f"A. {row['option_a']}")
+                    st.write(f"B. {row['option_b']}")
+                    st.write(f"C. {row['option_c']}")
         
         # --- 第二頁：統計分析 ---
         with tabs[1]:
@@ -1195,47 +1286,48 @@ def main():
 
     # 顯示題目
     for i, row in questions.iterrows():
+        question_id = row['id']
         question_text = row['question']
         
-        # 檢查是否包含程式碼區塊（通過檢查是否有換行符號）
+        # 顯示題號和題目
         if '\n' in question_text:
             # 分離題目文字和程式碼區塊
             parts = question_text.split('\n\n', 1)
             if len(parts) == 2:
-                st.subheader(f"Q{i+1}. {parts[0]}")
-                st.code(parts[1], language='python')
+                st.write(f"題目{question_id}: {parts[0]}")  # 顯示題號和題目文字
+                st.code(parts[1], language='python')  # 顯示程式碼區塊
             else:
-                st.subheader(f"Q{i+1}. {question_text}")
+                st.write(f"題目{question_id}: {question_text}")
         else:
-            st.subheader(f"Q{i+1}. {question_text}")
+            st.write(f"題目{question_id}: {question_text}")
         
-        # 準備選項列表，包含一個空選項
+        # 準備選項列表
         options = [
-            ("", "請選擇答案..."),
-            ("a", str(row["option_a"])),
-            ("b", str(row["option_b"])),
-            ("c", str(row["option_c"]))
+            ("", "- 請選擇答案 -"),
+            ("a", f"a. {str(row['option_a'])}"),
+            ("b", f"b. {str(row['option_b'])}"),
+            ("c", f"c. {str(row['option_c'])}")
         ]
         
-        # 決定預設選項
-        default_idx = 0  # 預設為 "請選擇答案..."
-        if row["id"] in st.session_state.responses:
-            ans = st.session_state.responses[row["id"]]
-            if ans == "a": default_idx = 1
-            elif ans == "b": default_idx = 2
-            elif ans == "c": default_idx = 3
+        # 獲取已選答案
+        current_answer = st.session_state.responses.get(question_id, "")
         
+        # 使用 selectbox 顯示選項
         choice = st.selectbox(
-            "請選擇：", 
+            label=f"第{question_id}題答案",
             options=options,
-            format_func=lambda x: f"{x[0]}. {x[1]}" if x[0] else x[1],
-            index=default_idx,
-            key=f"select_{i}"
+            format_func=lambda x: x[1],
+            key=f"select_{question_id}",
+            index=0 if not current_answer else [opt[0] for opt in options].index(current_answer)
         )
         
-        # 更新答案，只儲存非空選擇
-        if choice and choice[0]:
-            st.session_state.responses[row["id"]] = choice[0]
+        # 更新答案並觸發重新渲染
+        if choice[0] != current_answer:  # 只在答案改變時更新
+            if choice[0]:  # 選擇了實際選項
+                st.session_state.responses[question_id] = choice[0]
+            elif question_id in st.session_state.responses:
+                del st.session_state.responses[question_id]
+            st.experimental_rerun()  # 觸發頁面重新渲染
 
     # 倒數與自動繳交
     remaining_time = int(end_time - time.time())
@@ -1244,56 +1336,39 @@ def main():
     answered_count = len(st.session_state.responses)
     total_count = len(questions)
     if answered_count < total_count:
-        st.warning(f"⚠️ 您尚有 {total_count - answered_count} 題未作答，但您可以直接提交。")
+        st.warning(f"⚠️ 您尚有 {total_count - answered_count} 題未作答")
     else:
         st.success("✅ 所有題目都已作答！")
         
-    if remaining_time <= 0 or st.button("✅ 提交測驗", disabled=st.session_state.is_submitted):
+    # 提交按鈕
+    if st.button("提交測驗", key="submit_test"):
         try:
-            # 直接使用 session_state.responses 的答案，已經由 selectbox 控件更新過
-            responses = st.session_state.responses.copy()
+            # 計算分數
+            score, results, difficulty_stats = evaluate(questions, st.session_state.responses)
             
-            # 如果沒有任何回答，顯示警告
-            if len(responses) == 0:
-                st.warning("⚠️ 您尚未回答任何題目。確定要提交空白測驗嗎？")
-                if not st.button("確認提交空白測驗"):
-                    st.stop()
-            
-            # 評分與結果計算
-            score, results, difficulty_stats = evaluate(questions, responses)
+            # 保存結果到 session_state
+            st.session_state.score = score
             st.session_state.results = results
-            st.session_state.is_submitted = True
+            st.session_state.difficulty_stats = difficulty_stats
             
-            # 添加調試信息，檢查用戶選擇的答案
-            st.write("#### 調試信息 - 用戶答案")
-            st.write(st.session_state.responses)
-            
-            # 計算總分和最大可能分數
-            score = sum(r['score'] for r in st.session_state.results)
-            total = sum(r['max_score'] for r in st.session_state.results)
-            
-            # 正確調用 save_result 函數
+            # 保存到文件
             correct_rate = save_result(
                 st.session_state.name,
                 st.session_state.class_name,
-                score,  # 傳入計算出的分數
-                total,  # 傳入計算出的總分
-                st.session_state.responses  # 用戶回答
+                score,
+                100,  # 總分固定為100
+                st.session_state.responses
             )
             
-            if correct_rate > 0:
-                st.success("測驗結果已成功儲存！")
-            else:
-                st.error("測驗結果儲存失敗，請聯繫管理員。")
+            # 更新提交狀態
+            st.session_state.is_submitted = True
             
-            # 顯示答題情況摘要，以便確認資料是否正確保存
-            st.info(f"已回答 {len(responses)}/{len(questions)} 題，得分 {score:.1f} 分")
-            
+            # 使用 experimental_rerun 重新載入頁面
             st.experimental_rerun()
+            
         except Exception as e:
             st.error(f"提交測驗時發生錯誤: {str(e)}")
             st.error(f"錯誤詳情: {type(e).__name__}")
-            # 顯示目前的答案數據，幫助除錯
             st.write("目前記錄的答案:", st.session_state.responses)
 
     # 顯示剩餘時間（自動更新）
@@ -1332,22 +1407,66 @@ def main():
 def load_all_results():
     """讀取所有學生的測驗結果"""
     try:
-        # 使用 quoting 參數來正確處理包含換行符的欄位
-        results_df = pd.read_csv('result_log.csv', 
-                               encoding='utf-8',
-                               quoting=csv.QUOTE_ALL,  # 使用引號包住所有欄位
-                               escapechar='\\',        # 使用反斜線作為跳脫字元
-                               doublequote=True)       # 使用雙引號處理引號
-        return results_df
-    except FileNotFoundError:
-        return pd.DataFrame()
+        if not os.path.exists('result_log.csv'):
+            return pd.DataFrame()
+        
+        # 讀取 CSV 文件
+        df = pd.read_csv('result_log.csv', encoding='utf-8')
+        
+        # 確保必要的列存在
+        required_columns = ['timestamp', 'name', 'class', 'score', 'total', 'correct_rate']
+        if not all(col in df.columns for col in required_columns):
+            print("缺少必要的列")
+            return pd.DataFrame()
+        
+        # 確保數值列為數值類型
+        df['score'] = pd.to_numeric(df['score'], errors='coerce')
+        df['total'] = pd.to_numeric(df['total'], errors='coerce')
+        df['correct_rate'] = pd.to_numeric(df['correct_rate'], errors='coerce')
+        
+        # 處理答案列
+        answer_cols = [col for col in df.columns if col.startswith('q')]
+        for col in answer_cols:
+            df[col] = df[col].astype(str).str.strip().str.lower()
+        
+        return df
     except Exception as e:
         print(f"讀取結果數據時出錯: {str(e)}")
         return pd.DataFrame()
 
 def get_statistics_summary(results_df, current_score=None):
-    """生成測驗統計摘要，確保所有數值反映100分制的分數"""
-    if results_df.empty:
+    """生成測驗統計摘要"""
+    try:
+        if results_df.empty:
+            return {
+                "total_students": 0,
+                "avg_score": 0,
+                "median_score": 0,
+                "min_score": 0,
+                "max_score": 0,
+                "std_dev": 0,
+                "pass_rate": 0,
+                "all_scores": []
+            }
+        
+        # 確保分數是數值類型
+        scores = pd.to_numeric(results_df['correct_rate'], errors='coerce').fillna(0)
+        
+        # 計算統計量
+        stats = {
+            "total_students": len(scores),
+            "avg_score": round(scores.mean(), 1),
+            "median_score": round(scores.median(), 1),
+            "min_score": round(scores.min(), 1),
+            "max_score": round(scores.max(), 1),
+            "std_dev": round(scores.std(), 1) if len(scores) > 1 else 0,
+            "pass_rate": round(((scores >= 60).sum() / len(scores)) * 100, 1),
+            "all_scores": scores.tolist()
+        }
+        
+        return stats
+    except Exception as e:
+        print(f"計算統計摘要時出錯: {str(e)}")
         return {
             "total_students": 0,
             "avg_score": 0,
@@ -1358,56 +1477,6 @@ def get_statistics_summary(results_df, current_score=None):
             "pass_rate": 0,
             "all_scores": []
         }
-    
-    # 確保分數欄位存在且是數值
-    if 'score' not in results_df.columns:
-        return {
-            "total_students": len(results_df),
-            "avg_score": 0,
-            "median_score": 0,
-            "min_score": 0,
-            "max_score": 0,
-            "std_dev": 0,
-            "pass_rate": 0,
-            "all_scores": []
-        }
-    
-    # 提取分數，確保是數值類型
-    scores = pd.to_numeric(results_df["score"], errors='coerce').fillna(0).values
-    
-    # 特殊處理：如果只有一位學生
-    if len(scores) <= 1:
-        return {
-            "total_students": len(scores),
-            "avg_score": scores[0] if len(scores) == 1 else 0,
-            "median_score": scores[0] if len(scores) == 1 else 0,
-            "min_score": scores[0] if len(scores) == 1 else 0,
-            "max_score": scores[0] if len(scores) == 1 else 0,
-            "std_dev": 0,
-            "pass_rate": 100 if len(scores) == 1 and scores[0] >= 60 else 0,
-            "all_scores": scores.tolist()
-        }
-    
-    # 計算統計量
-    total_students = len(scores)
-    avg_score = np.mean(scores)
-    median_score = np.median(scores)
-    min_score = np.min(scores)
-    max_score = np.max(scores)
-    std_dev = np.std(scores)
-    pass_rate = (scores >= 60).mean() * 100
-    
-    # 返回計算結果
-    return {
-        "total_students": total_students,
-        "avg_score": round(avg_score, 1),
-        "median_score": round(median_score, 1),
-        "min_score": round(min_score, 1),
-        "max_score": round(max_score, 1),
-        "std_dev": round(std_dev, 1),
-        "pass_rate": round(pass_rate, 1),
-        "all_scores": scores.tolist()
-    }
 
 def calculate_student_percentile(student_score, all_scores):
     """計算學生在全體中的百分位排名"""
@@ -1893,111 +1962,47 @@ def calculate_statistics(quiz_data, total_students):
     return pd.DataFrame([stats]), pd.DataFrame([score_ranges])
 
 def calculate_category_stats(questions_df, results_df, current_results):
-    """計算每個類別的統計數據，確保個人和班級平均正確率計算方式統一"""
+    """計算每個類別的統計數據"""
     try:
-        if not isinstance(questions_df, pd.DataFrame):
-            print("Warning: questions_df is not a DataFrame")
+        if results_df.empty:
             return []
-        
-        # 檢查必要的列是否存在
-        required_columns = ['id', 'category', 'answer', 'difficulty']
-        if not all(col in questions_df.columns for col in required_columns):
-            print(f"Missing required columns. Available columns: {questions_df.columns.tolist()}")
-            return []
-        
-        # 定義難度權重（用於分數計算，但不影響正確率計算）
-        difficulty_weights = {
-            "簡單": 5,
-            "中等": 10,
-            "困難": 15
-        }
-        
+            
+        # 獲取所有類別
         categories = questions_df['category'].unique()
         category_stats = []
         
         for category in categories:
-            try:
-                # 獲取此類別的所有題目
-                cat_questions = questions_df[questions_df['category'] == category]
-                cat_question_ids = cat_questions['id'].tolist()
-                total_questions_in_category = len(cat_question_ids)
+            # 獲取此類別的所有題目
+            cat_questions = questions_df[questions_df['category'] == category]
+            
+            # 計算此類別的正確率
+            total_correct = 0
+            total_questions = len(cat_questions)
+            
+            for _, question in cat_questions.iterrows():
+                qid = str(question['id'])
+                col_name = f'q{qid}'
                 
-                # 計算個人在此類別的得分和答對數
-                personal_points = 0
-                personal_correct = 0
-                questions_answered = 0
-                
-                # 班級統計變數
-                class_correct_sum = 0
-                class_total_sum = 0
-                
-                for _, question in cat_questions.iterrows():
-                    qid = str(question['id'])
-                    weight = difficulty_weights[question['difficulty']]
-                    
-                    # 計算個人成績
-                    result = next((r for r in current_results if str(r['id']) == qid), None)
-                    if result:
-                        questions_answered += 1
-                        if result.get('is_correct'):
-                            personal_points += weight
-                            personal_correct += 1
-                    
-                    # 計算班級平均 - 使用答對人數/總人數
-                    col_name = f'q{qid}'
-                    if col_name in results_df.columns:
-                        correct_answer = str(question['answer']).strip().lower()
-                        total_students = len(results_df)
-                        
-                        if total_students > 0:
-                            # 計算答對此題的學生數
-                            correct_count = sum(
-                                str(ans).strip().lower() == correct_answer 
-                                for ans in results_df[col_name] if pd.notna(ans)
-                            )
-                            # 累計班級答對數和題目數
-                            class_correct_sum += correct_count
-                            class_total_sum += total_students
-                
-                # 計算百分比 - 確保正確率基於答對題數除以總題數
-                personal_rate = (personal_correct / total_questions_in_category * 100) if total_questions_in_category > 0 else 0
-                
-                # 班級平均正確率 - 使用班級總答對數除以總題數*學生數
-                class_rate = (class_correct_sum / class_total_sum * 100) if class_total_sum > 0 else 0
-                
-                # 如果只有一位學生，班級平均應該等於個人成績
-                if len(results_df) == 1:
-                    class_rate = personal_rate
-                
-                # 計算基於權重的分數總值（僅用於顯示分數，不影響正確率）
-                category_total_points = sum(difficulty_weights[q['difficulty']] 
-                                         for _, q in cat_questions.iterrows())
-                
-                # 添加調試信息
-                print(f"Category {category}: personal_correct={personal_correct}/{total_questions_in_category}={personal_rate:.1f}%, "
-                      f"class_correct_sum={class_correct_sum}, class_total_sum={class_total_sum}, class_rate={class_rate:.1f}%")
-                
-                category_stats.append({
-                    "category": category,
-                    "personal_rate": round(personal_rate, 1),
-                    "class_rate": round(class_rate, 1),
-                    "total_questions": total_questions_in_category,
-                    "personal_correct": personal_correct,
-                    "total_points": category_total_points,
-                    "personal_points": personal_points,
-                    "answered": questions_answered,
-                    "class_correct_sum": class_correct_sum,
-                    "class_total_sum": class_total_sum
-                })
-                
-            except Exception as e:
-                print(f"Error processing category {category}: {str(e)}")
-                continue
+                if col_name in results_df.columns:
+                    # 計算此題的正確率
+                    correct_answer = str(question['answer']).strip().lower()
+                    correct_count = (results_df[col_name].str.strip().str.lower() == correct_answer).sum()
+                    total_correct += correct_count / len(results_df)
+            
+            # 計算此類別的平均正確率
+            category_correct_rate = (total_correct / total_questions * 100) if total_questions > 0 else 0
+            
+            category_stats.append({
+                'category': category,
+                'correct_rate': round(category_correct_rate, 1)
+            })
         
+        # 按正確率降序排序
+        category_stats.sort(key=lambda x: x['correct_rate'], reverse=True)
         return category_stats
         
     except Exception as e:
-        print(f"Error in calculate_category_stats: {str(e)}")
+        print(f"計算類別統計時出錯: {str(e)}")
         return []
 
 # 使用 JavaScript 實現倒計時，減少伺服器端負擔
