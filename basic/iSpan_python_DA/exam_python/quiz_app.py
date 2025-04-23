@@ -37,7 +37,9 @@ if 'results' not in st.session_state:
     st.session_state.results = None
 if 'current_tab' not in st.session_state:
     st.session_state.current_tab = "results"  # 默認顯示個人結果頁面
-
+if 'responses' not in st.session_state:
+    st.session_state.responses = {}
+    
 # --- 讀取題庫 ---
 @st.cache_data
 def load_questions(file="quiz.csv"):
@@ -45,7 +47,7 @@ def load_questions(file="quiz.csv"):
     df = pd.read_csv(file, encoding='utf-8')
     
     # 確保所有文字欄位都是字符串，不是 NaN
-    text_columns = ['question', 'option_a', 'option_b', 'option_c', 'answer', 'category', 'difficulty']
+    text_columns = ['question', 'option_a', 'option_b', 'option_c', 'answer', 'category', 'difficulty', 'explanation', 'knowledge_point', 'question_type', 'chapter']
     for col in text_columns:
         if col in df.columns:
             df[col] = df[col].fillna('').astype(str)
@@ -55,6 +57,10 @@ def load_questions(file="quiz.csv"):
 # --- 計分 ---
 def evaluate(questions, responses):
     """根據難度計算分數，確保總分為100分"""
+    # 確保 responses 是字典
+    if responses is None:
+        responses = {}
+        
     # 定義難度權重比例
     difficulty_weights = {
         "簡單": 1,    # 簡單題權重1
@@ -112,6 +118,10 @@ def evaluate(questions, responses):
             'option_c': row['option_c'],
             'category': row['category'],
             'difficulty': difficulty,
+            'explanation': row['explanation'] if 'explanation' in row else '',
+            'knowledge_point': row['knowledge_point'] if 'knowledge_point' in row else '',
+            'question_type': row['question_type'] if 'question_type' in row else '',
+            'chapter': row['chapter'] if 'chapter' in row else '',
             'score': question_score if is_correct else 0,
             'max_score': question_score
         })
@@ -139,7 +149,7 @@ def get_excel_download_link(df, filename="測驗結果.xlsx"):
 
 # --- 結果匯出為Excel ---
 def export_results_to_excel(results, name, class_name, score, total):
-    """將測驗結果匯出為Excel格式"""
+    """將測驗結果匯出為Excel格式，包含題目解析"""
     # 建立DataFrame
     data = []
     for i, result in enumerate(results):
@@ -148,7 +158,11 @@ def export_results_to_excel(results, name, class_name, score, total):
             '題目': result['question'],
             '您的答案': f"{result['selected']}. {result['option_a'] if result['selected'] == 'a' else result['option_b'] if result['selected'] == 'b' else result['option_c'] if result['selected'] == 'c' else '未作答'}",
             '正確答案': f"{result['correct']}. {result['option_a'] if result['correct'] == 'a' else result['option_b'] if result['correct'] == 'b' else result['option_c'] if result['correct'] == 'c' else ''}",
-            '是否正確': '✓' if result['is_correct'] else '✗'
+            '是否正確': '✓' if result['is_correct'] else '✗',
+            '知識點': result.get('knowledge_point', ''),
+            '題目類型': result.get('question_type', ''),
+            '章節': result.get('chapter', ''),
+            '解析': result.get('explanation', '')
         }
         data.append(row)
     
@@ -544,6 +558,24 @@ def start_test():
 
 # --- 主流程 ---
 def main():
+    # 確保關鍵 session state 變數已初始化
+    if 'is_test_started' not in st.session_state:
+        st.session_state.is_test_started = False
+    if 'name' not in st.session_state:
+        st.session_state.name = ""
+    if 'class_name' not in st.session_state:
+        st.session_state.class_name = ""
+    if 'start_time' not in st.session_state:
+        st.session_state.start_time = 0
+    if 'responses' not in st.session_state:
+        st.session_state.responses = {}
+    if 'is_submitted' not in st.session_state:
+        st.session_state.is_submitted = False
+    if 'results' not in st.session_state:
+        st.session_state.results = None
+    if 'current_tab' not in st.session_state:
+        st.session_state.current_tab = "results"  # 默認顯示個人結果頁面
+        
     st.set_page_config(
         page_title="📝 班級線上測驗系統",
         page_icon="",
@@ -633,7 +665,8 @@ def main():
         with st.expander("📋 考試說明", expanded=True):
             st.markdown("""
             ### 考試時間與計分方式
-            - 考試時間：30分鐘
+            - 考試時間：15分鐘
+            - 題目數量：100題
             - 題目類型：選擇題
             - 計分方式：
                 - 簡單題：5分/題
@@ -700,7 +733,11 @@ def main():
                 '題目': r['question'], 
                 '您的答案': f"{r['selected']}. {r['option_a'] if r['selected'] == 'a' else r['option_b'] if r['selected'] == 'b' else r['option_c'] if r['selected'] == 'c' else '未作答'}" if r['selected'] else "未作答",
                 '正確答案': f"{r['correct']}. {r['option_a'] if r['correct'] == 'a' else r['option_b'] if r['correct'] == 'b' else r['option_c'] if r['correct'] == 'c'else ''}",
-                '是否正確': '✓' if r['is_correct'] else '✗'
+                '是否正確': '✓' if r['is_correct'] else '✗',
+                '知識點': r.get('knowledge_point', ''),
+                '題型': r.get('question_type', ''),
+                '章節': r.get('chapter', ''),
+                '解析': r.get('explanation', '')
             } for r in results])
             
             # 建立一個BytesIO對象
@@ -793,6 +830,22 @@ def main():
                     st.write(f"A. {row['option_a']}")
                     st.write(f"B. {row['option_b']}")
                     st.write(f"C. {row['option_c']}")
+                    
+                    # 顯示解析
+                    if 'explanation' in row and row['explanation']:
+                        st.markdown("---")
+                        st.markdown("**📝 解析:**")
+                        st.markdown(row['explanation'])
+                    
+                    # 顯示知識點與章節
+                    if ('knowledge_point' in row and row['knowledge_point']) or ('chapter' in row and row['chapter']):
+                        st.markdown("---")
+                        if 'knowledge_point' in row and row['knowledge_point']:
+                            st.markdown(f"**📚 知識點:** {row['knowledge_point']}")
+                        if 'chapter' in row and row['chapter']:
+                            st.markdown(f"**📖 章節:** {row['chapter']}")
+                        if 'question_type' in row and row['question_type']:
+                            st.markdown(f"**🔖 題型:** {row['question_type']}")
         
         # --- 第二頁：統計分析 ---
         with tabs[1]:
@@ -1309,7 +1362,7 @@ def main():
             ("c", f"c. {str(row['option_c'])}")
         ]
         
-        # 獲取已選答案
+
         current_answer = st.session_state.responses.get(question_id, "")
         
         # 使用 selectbox 顯示選項
@@ -1333,6 +1386,8 @@ def main():
     remaining_time = int(end_time - time.time())
     
     # 顯示未作答題目數量
+    if 'responses' not in st.session_state:
+        st.session_state.responses = {}
     answered_count = len(st.session_state.responses)
     total_count = len(questions)
     if answered_count < total_count:
@@ -1343,6 +1398,10 @@ def main():
     # 提交按鈕
     if st.button("提交測驗", key="submit_test"):
         try:
+            # 確保 responses 存在
+            if 'responses' not in st.session_state:
+                st.session_state.responses = {}
+                
             # 計算分數
             score, results, difficulty_stats = evaluate(questions, st.session_state.responses)
             
