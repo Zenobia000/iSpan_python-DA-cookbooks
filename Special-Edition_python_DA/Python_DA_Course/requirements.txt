@@ -1,0 +1,19 @@
+# Python DA 12H Course - Pinned Dependencies
+# Compatible with Python 3.9 ~ 3.12
+
+# Core scientific stack
+numpy>=1.26,<2.2
+pandas>=2.1,<2.3
+
+# Visualization
+matplotlib>=3.8,<3.10
+seaborn>=0.13,<0.14
+plotly>=5.18,<6.0
+
+# Jupyter runtime
+jupyter>=1.0
+notebook>=7.0
+ipykernel>=6.28
+
+# Testing
+pytest>=7.4
