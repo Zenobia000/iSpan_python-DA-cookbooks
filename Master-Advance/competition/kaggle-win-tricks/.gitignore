@@ -1,0 +1,7 @@
+# Kaggle datasets (download via S0 notebook)
+datasets/titanic/
+datasets/house-prices/
+datasets/spaceship-titanic/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
