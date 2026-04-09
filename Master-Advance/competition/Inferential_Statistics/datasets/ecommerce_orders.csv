@@ -1,0 +1,501 @@
+order_id,customer_id,product_category,order_amount,quantity,discount_pct,shipping_fee,payment_method,rating,delivery_days
+1001,202,Home & Garden,9.13,9,5.0,8.31,Credit Card,3,4
+1002,370,Books,36.63,9,0.0,8.13,PayPal,4,2
+1003,206,Electronics,6.49,2,30.0,11.43,Credit Card,3,2
+1004,171,Electronics,57.5,3,10.0,12.5,Bank Transfer,5,7
+1005,288,Books,246.06,7,5.0,6.61,Bank Transfer,5,3
+1006,120,Electronics,67.87,5,0.0,4.53,Credit Card,4,1
+1007,202,Home & Garden,20.71,2,0.0,3.89,PayPal,5,3
+1008,221,Books,56.09,3,20.0,2.92,PayPal,5,7
+1009,314,Electronics,167.42,6,15.0,0.86,Credit Card,4,5
+1010,187,Electronics,159.25,7,0.0,5.14,Cash on Delivery,2,5
+1011,199,Sports,12.14,9,25.0,4.05,Bank Transfer,4,4
+1012,251,Clothing,55.16,1,5.0,14.5,PayPal,4,5
+1013,230,Clothing,28.27,7,25.0,8.37,Bank Transfer,4,5
+1014,249,Home & Garden,74.19,8,20.0,5.21,PayPal,4,3
+1015,357,Sports,48.6,3,10.0,8.71,Cash on Delivery,5,3
+1016,393,Sports,3.1,4,25.0,2.09,PayPal,3,6
+1017,291,Home & Garden,23.38,6,30.0,6.66,Bank Transfer,4,6
+1018,376,Clothing,40.39,7,10.0,9.39,Cash on Delivery,4,4
+1019,260,Electronics,7.89,4,10.0,7.33,Credit Card,4,9
+1020,121,Home & Garden,59.21,8,0.0,6.03,Bank Transfer,4,6
+1021,352,Books,7.21,5,10.0,14.91,Credit Card,3,5
+1022,335,Clothing,14.9,1,0.0,13.2,Credit Card,3,5
+1023,148,Sports,126.64,4,20.0,9.35,Credit Card,4,4
+1024,158,Electronics,13.68,3,10.0,8.54,Cash on Delivery,4,10
+1025,269,Clothing,58.79,9,25.0,9.31,Cash on Delivery,3,6
+1026,287,Electronics,5.73,8,0.0,3.02,Bank Transfer,5,2
+1027,370,Clothing,265.42,1,0.0,5.93,Bank Transfer,4,4
+1028,289,Electronics,24.42,6,0.0,0.59,PayPal,4,3
+1029,274,Electronics,36.43,9,30.0,7.13,Cash on Delivery,5,2
+1030,150,Electronics,39.61,7,10.0,8.15,PayPal,3,5
+1031,154,Books,60.8,4,30.0,3.42,Credit Card,1,6
+1032,343,Books,7.25,1,30.0,14.46,Credit Card,5,5
+1033,230,Books,32.94,2,0.0,13.64,Bank Transfer,4,10
+1034,234,Sports,17.14,5,0.0,10.83,Bank Transfer,4,5
+1035,120,Clothing,6.11,5,10.0,8.0,Credit Card,5,5
+1036,266,Clothing,88.87,8,5.0,13.05,Credit Card,5,4
+1037,373,Home & Garden,23.29,6,30.0,1.96,Bank Transfer,5,4
+1038,188,Electronics,42.2,8,20.0,11.86,Credit Card,4,3
+1039,113,Sports,39.64,2,15.0,1.87,Bank Transfer,4,6
+1040,341,Electronics,23.69,3,20.0,11.91,Cash on Delivery,4,4
+1041,364,Sports,238.66,6,0.0,4.14,PayPal,3,2
+1042,152,Electronics,31.59,3,0.0,13.16,Credit Card,4,9
+1043,191,Home & Garden,6.97,6,25.0,14.16,Bank Transfer,3,5
+1044,363,Clothing,22.19,6,0.0,2.23,Bank Transfer,5,9
+1045,134,Sports,54.58,2,30.0,6.94,PayPal,4,5
+1046,305,Electronics,56.41,7,20.0,14.71,Cash on Delivery,4,5
+1047,180,Books,11.16,2,15.0,7.25,Credit Card,4,1
+1048,149,Sports,83.89,6,0.0,12.95,PayPal,2,5
+1049,101,Clothing,5.68,1,0.0,8.83,Bank Transfer,1,8
+1050,153,Books,103.97,3,0.0,5.63,Cash on Delivery,4,6
+1051,205,Books,8.85,2,15.0,4.29,Credit Card,2,2
+1052,359,Clothing,26.41,7,15.0,3.05,Bank Transfer,4,5
+1053,290,Books,96.02,4,0.0,11.43,PayPal,5,5
+1054,317,Books,37.32,8,0.0,5.8,Credit Card,5,4
+1055,143,Sports,74.94,6,10.0,7.67,Credit Card,4,6
+1056,261,Electronics,61.48,4,10.0,7.38,Cash on Delivery,3,5
+1057,301,Clothing,119.85,5,0.0,8.66,Credit Card,5,6
+1058,369,Sports,95.79,9,15.0,12.98,Credit Card,5,5
+1059,370,Home & Garden,21.04,7,30.0,14.71,Credit Card,3,4
+1060,314,Clothing,62.36,9,0.0,6.11,Cash on Delivery,5,7
+1061,351,Books,7.2,7,0.0,12.41,PayPal,3,5
+1062,289,Clothing,31.25,1,0.0,11.47,Bank Transfer,5,7
+1063,395,Electronics,75.07,8,20.0,8.6,Credit Card,5,6
+1064,312,Clothing,37.86,4,15.0,14.34,PayPal,1,4
+1065,307,Clothing,51.76,3,25.0,3.01,PayPal,5,8
+1066,336,Books,26.76,7,25.0,1.64,Bank Transfer,4,4
+1067,152,Electronics,102.42,3,15.0,12.81,Cash on Delivery,5,3
+1068,379,Sports,30.56,8,0.0,6.59,Credit Card,4,5
+1069,316,Sports,20.79,6,0.0,12.7,PayPal,5,10
+1070,351,Books,80.36,5,0.0,13.4,Credit Card,2,6
+1071,287,Clothing,8.12,4,20.0,0.94,PayPal,3,4
+1072,140,Clothing,54.65,8,10.0,13.25,Credit Card,2,3
+1073,256,Home & Garden,11.68,8,5.0,6.72,Credit Card,5,3
+1074,114,Books,118.86,1,5.0,7.66,Credit Card,5,5
+1075,164,Electronics,25.51,9,5.0,9.4,PayPal,5,2
+1076,108,Sports,37.9,5,15.0,13.9,Credit Card,5,6
+1077,228,Home & Garden,50.03,4,25.0,0.29,Bank Transfer,2,2
+1078,235,Sports,4.81,6,25.0,7.15,PayPal,4,5
+1079,162,Books,17.28,6,10.0,10.32,Credit Card,2,2
+1080,238,Books,94.02,2,15.0,10.84,Bank Transfer,3,6
+1081,180,Clothing,78.87,8,5.0,10.39,Credit Card,3,3
+1082,262,Sports,43.95,7,30.0,2.02,PayPal,4,5
+1083,388,Home & Garden,8.59,1,25.0,4.49,PayPal,3,2
+1084,360,Electronics,59.47,5,0.0,5.38,Credit Card,2,6
+1085,330,Electronics,67.59,6,0.0,12.07,Credit Card,3,6
+1086,140,Clothing,34.71,4,30.0,4.18,Credit Card,2,7
+1087,127,Home & Garden,112.52,2,25.0,3.16,Cash on Delivery,5,6
+1088,234,Sports,16.72,4,0.0,14.36,PayPal,5,6
+1089,300,Electronics,19.89,1,25.0,0.13,PayPal,5,4
+1090,367,Books,2.76,7,0.0,14.97,PayPal,4,4
+1091,132,Clothing,83.08,2,5.0,10.15,Credit Card,3,7
+1092,147,Sports,45.33,2,0.0,12.43,PayPal,5,5
+1093,161,Home & Garden,6.16,9,15.0,4.42,Bank Transfer,3,5
+1094,315,Home & Garden,5.71,5,20.0,0.21,Credit Card,3,8
+1095,392,Clothing,13.84,2,5.0,11.07,Credit Card,3,4
+1096,198,Clothing,73.23,9,20.0,12.51,Credit Card,2,2
+1097,271,Clothing,24.52,9,30.0,11.11,PayPal,3,3
+1098,313,Electronics,14.81,1,0.0,2.14,Cash on Delivery,4,4
+1099,134,Home & Garden,12.11,3,0.0,11.3,Credit Card,4,6
+1100,326,Home & Garden,11.58,4,10.0,11.53,PayPal,2,9
+1101,200,Sports,4.79,7,0.0,9.88,Credit Card,3,3
+1102,230,Sports,9.9,4,25.0,11.49,Cash on Delivery,5,5
+1103,356,Books,11.35,2,25.0,12.69,Credit Card,2,3
+1104,104,Home & Garden,65.54,7,25.0,9.2,PayPal,3,2
+1105,317,Sports,28.06,6,30.0,1.33,Bank Transfer,5,4
+1106,354,Home & Garden,14.5,3,5.0,7.31,Bank Transfer,3,9
+1107,382,Electronics,333.53,6,10.0,1.16,PayPal,2,4
+1108,306,Clothing,17.05,6,10.0,6.11,Credit Card,4,5
+1109,114,Electronics,106.39,5,25.0,6.11,Credit Card,3,8
+1110,141,Sports,167.52,4,20.0,0.99,Credit Card,4,8
+1111,278,Books,6.89,1,30.0,5.23,Credit Card,5,5
+1112,162,Electronics,35.66,6,25.0,1.66,PayPal,2,3
+1113,330,Books,19.74,2,0.0,12.12,Credit Card,4,9
+1114,340,Books,18.19,3,5.0,14.22,Credit Card,4,2
+1115,151,Clothing,57.71,8,15.0,1.08,PayPal,2,8
+1116,195,Electronics,17.76,6,0.0,14.33,Cash on Delivery,4,7
+1117,321,Books,20.17,3,20.0,7.84,PayPal,3,6
+1118,330,Clothing,27.99,7,0.0,4.49,Credit Card,4,9
+1119,336,Home & Garden,22.8,4,0.0,1.15,Credit Card,2,3
+1120,242,Clothing,10.24,9,0.0,7.51,Cash on Delivery,4,6
+1121,270,Home & Garden,73.4,5,25.0,11.92,Credit Card,3,7
+1122,128,Books,94.49,3,15.0,10.61,Credit Card,5,7
+1123,135,Books,46.69,2,0.0,0.75,PayPal,2,5
+1124,112,Home & Garden,22.72,2,0.0,1.09,PayPal,4,5
+1125,259,Clothing,16.36,3,20.0,6.04,PayPal,4,1
+1126,286,Electronics,16.39,2,25.0,4.43,Credit Card,5,7
+1127,342,Electronics,349.81,4,10.0,3.49,Credit Card,4,4
+1128,185,Home & Garden,84.59,2,10.0,4.22,Cash on Delivery,4,7
+1129,383,Books,14.29,9,5.0,12.05,Credit Card,5,5
+1130,165,Books,39.04,2,15.0,13.94,PayPal,5,5
+1131,269,Electronics,23.05,9,15.0,6.08,Bank Transfer,3,3
+1132,144,Electronics,59.37,6,0.0,13.59,PayPal,4,5
+1133,161,Electronics,57.03,1,30.0,4.82,Credit Card,5,5
+1134,233,Clothing,97.87,4,20.0,7.15,Credit Card,5,4
+1135,383,Books,14.15,1,0.0,3.39,PayPal,5,3
+1136,127,Clothing,36.77,6,20.0,9.61,Cash on Delivery,4,3
+1137,207,Clothing,5.76,4,10.0,14.68,Cash on Delivery,3,5
+1138,143,Sports,9.42,3,10.0,9.05,Credit Card,4,10
+1139,385,Clothing,80.17,3,0.0,5.37,Credit Card,5,2
+1140,227,Clothing,12.8,9,5.0,9.72,Cash on Delivery,4,5
+1141,330,Home & Garden,14.28,6,15.0,1.84,Bank Transfer,4,3
+1142,289,Clothing,32.84,9,20.0,13.33,Cash on Delivery,5,4
+1143,324,Books,66.34,5,10.0,7.55,Credit Card,4,6
+1144,382,Home & Garden,11.46,2,30.0,6.74,PayPal,5,3
+1145,220,Sports,1.02,8,0.0,8.79,Bank Transfer,4,4
+1146,215,Electronics,13.87,5,0.0,9.37,PayPal,3,4
+1147,332,Sports,110.57,2,5.0,1.08,PayPal,4,5
+1148,358,Clothing,46.67,4,30.0,10.24,Credit Card,5,8
+1149,297,Clothing,124.45,9,5.0,3.63,PayPal,2,5
+1150,236,Clothing,10.68,4,0.0,10.71,Credit Card,3,6
+1151,264,Sports,6.43,4,10.0,12.34,PayPal,5,3
+1152,324,Clothing,52.59,2,0.0,12.06,Cash on Delivery,3,4
+1153,333,Clothing,42.1,6,30.0,8.29,Credit Card,4,5
+1154,271,Books,44.95,2,5.0,7.8,Bank Transfer,4,6
+1155,251,Electronics,84.18,7,15.0,2.14,Credit Card,4,7
+1156,259,Electronics,50.49,3,0.0,11.63,PayPal,4,5
+1157,195,Electronics,49.68,3,15.0,4.07,Cash on Delivery,3,2
+1158,332,Electronics,67.69,5,0.0,7.45,Credit Card,4,6
+1159,279,Electronics,54.73,3,30.0,4.26,Credit Card,4,4
+1160,212,Electronics,78.06,2,0.0,2.01,PayPal,4,2
+1161,151,Books,90.79,9,30.0,9.44,Credit Card,2,4
+1162,367,Electronics,153.19,2,10.0,0.81,Bank Transfer,4,2
+1163,394,Clothing,17.3,2,25.0,11.23,Cash on Delivery,3,3
+1164,212,Home & Garden,53.55,8,0.0,4.76,PayPal,3,4
+1165,200,Clothing,22.87,9,15.0,0.0,Credit Card,3,7
+1166,212,Books,14.39,7,0.0,7.67,PayPal,3,5
+1167,180,Electronics,16.62,3,10.0,0.7,Bank Transfer,5,5
+1168,286,Electronics,54.32,9,25.0,4.14,Credit Card,3,7
+1169,212,Electronics,50.31,3,0.0,10.6,PayPal,5,9
+1170,101,Electronics,49.42,5,10.0,0.94,PayPal,5,7
+1171,229,Clothing,26.42,9,0.0,12.59,PayPal,4,6
+1172,319,Electronics,33.23,3,5.0,0.06,Credit Card,2,6
+1173,153,Electronics,75.02,7,0.0,3.7,Bank Transfer,4,9
+1174,323,Electronics,7.47,1,30.0,11.11,Credit Card,5,2
+1175,324,Clothing,33.94,4,0.0,4.74,Credit Card,4,3
+1176,225,Electronics,36.23,4,0.0,1.53,Cash on Delivery,2,9
+1177,229,Clothing,70.34,7,30.0,5.4,Bank Transfer,4,3
+1178,152,Clothing,8.58,8,20.0,4.06,Credit Card,5,8
+1179,271,Books,147.69,1,15.0,12.64,Credit Card,5,5
+1180,317,Electronics,41.0,5,0.0,4.7,Credit Card,3,4
+1181,259,Home & Garden,43.23,7,10.0,11.83,Credit Card,4,9
+1182,297,Books,22.17,4,0.0,13.38,Credit Card,3,2
+1183,346,Electronics,56.71,4,0.0,6.51,Credit Card,3,5
+1184,302,Home & Garden,34.74,4,5.0,13.65,PayPal,5,10
+1185,283,Sports,110.94,6,0.0,5.66,Bank Transfer,3,5
+1186,222,Electronics,7.83,7,0.0,14.46,PayPal,3,4
+1187,354,Clothing,39.47,2,0.0,1.34,PayPal,1,7
+1188,393,Home & Garden,49.82,5,25.0,10.31,Credit Card,5,3
+1189,379,Books,27.48,4,25.0,7.41,Cash on Delivery,5,6
+1190,197,Electronics,22.09,3,20.0,5.81,Bank Transfer,4,3
+1191,297,Electronics,23.04,7,15.0,9.49,Bank Transfer,5,3
+1192,339,Clothing,39.43,6,30.0,10.56,Bank Transfer,3,4
+1193,243,Clothing,5.42,7,5.0,0.07,Cash on Delivery,4,1
+1194,196,Books,86.92,5,0.0,2.5,PayPal,4,2
+1195,300,Clothing,20.49,6,25.0,10.7,Credit Card,2,4
+1196,223,Clothing,37.63,5,20.0,10.0,PayPal,4,5
+1197,286,Books,47.8,7,20.0,14.49,Bank Transfer,5,8
+1198,358,Electronics,19.57,2,0.0,11.42,Bank Transfer,1,7
+1199,247,Clothing,29.05,5,5.0,14.26,PayPal,3,7
+1200,351,Books,4.33,6,30.0,10.54,Credit Card,3,2
+1201,246,Home & Garden,68.86,6,15.0,4.47,Credit Card,3,6
+1202,247,Clothing,97.52,5,10.0,1.58,Cash on Delivery,5,8
+1203,298,Clothing,6.04,7,0.0,11.73,PayPal,4,6
+1204,227,Electronics,22.05,8,30.0,9.66,PayPal,4,4
+1205,138,Clothing,9.68,7,10.0,0.72,Credit Card,5,4
+1206,228,Clothing,27.72,5,10.0,5.4,Credit Card,3,4
+1207,366,Electronics,63.35,1,5.0,14.35,Cash on Delivery,4,1
+1208,250,Clothing,88.88,5,5.0,7.51,PayPal,4,6
+1209,397,Clothing,101.68,2,0.0,6.49,Bank Transfer,4,8
+1210,198,Electronics,122.8,5,20.0,6.87,PayPal,5,7
+1211,362,Clothing,26.51,5,30.0,3.13,PayPal,5,7
+1212,351,Electronics,10.52,2,0.0,5.53,Credit Card,4,6
+1213,243,Clothing,29.53,5,0.0,5.55,Bank Transfer,5,6
+1214,211,Electronics,62.38,4,0.0,0.79,PayPal,3,4
+1215,159,Home & Garden,9.71,1,0.0,11.51,PayPal,1,3
+1216,101,Books,174.19,3,15.0,6.25,PayPal,3,6
+1217,353,Books,81.28,1,20.0,12.33,Cash on Delivery,3,3
+1218,239,Home & Garden,26.94,5,0.0,12.76,Credit Card,4,10
+1219,136,Clothing,16.27,4,25.0,3.18,Bank Transfer,4,5
+1220,259,Electronics,16.96,7,15.0,9.86,Credit Card,5,6
+1221,108,Clothing,35.67,5,5.0,7.08,PayPal,4,6
+1222,332,Books,26.33,4,10.0,13.2,Credit Card,4,4
+1223,198,Books,85.67,2,25.0,3.24,Credit Card,2,6
+1224,246,Clothing,23.5,4,0.0,10.17,PayPal,1,5
+1225,307,Electronics,54.9,2,0.0,9.12,Credit Card,4,3
+1226,230,Clothing,32.17,8,5.0,4.43,PayPal,4,2
+1227,251,Clothing,43.37,3,0.0,2.05,Cash on Delivery,5,3
+1228,153,Books,26.31,9,30.0,9.77,Credit Card,3,2
+1229,219,Books,67.2,4,25.0,11.08,Bank Transfer,1,8
+1230,260,Clothing,68.21,6,25.0,4.73,PayPal,4,7
+1231,215,Sports,52.45,5,15.0,9.67,PayPal,3,4
+1232,174,Books,60.8,1,20.0,5.93,Credit Card,1,3
+1233,212,Electronics,12.88,9,15.0,10.7,Credit Card,5,3
+1234,203,Electronics,45.75,1,30.0,2.99,Credit Card,2,6
+1235,353,Electronics,115.49,8,0.0,13.35,Credit Card,4,5
+1236,326,Electronics,54.13,9,0.0,4.31,Credit Card,3,1
+1237,211,Electronics,11.81,9,0.0,5.52,PayPal,3,8
+1238,198,Electronics,31.51,1,0.0,0.87,Cash on Delivery,4,9
+1239,252,Clothing,48.18,2,30.0,1.67,Bank Transfer,5,4
+1240,293,Electronics,15.53,1,5.0,7.74,PayPal,4,7
+1241,262,Home & Garden,8.51,2,20.0,4.01,Credit Card,5,3
+1242,307,Electronics,24.14,8,30.0,12.53,Credit Card,2,7
+1243,268,Clothing,15.79,5,20.0,0.22,Credit Card,5,5
+1244,260,Clothing,32.65,7,30.0,5.69,Credit Card,3,6
+1245,167,Sports,6.74,2,0.0,5.06,PayPal,4,8
+1246,388,Electronics,58.25,8,5.0,0.29,PayPal,4,2
+1247,376,Clothing,17.56,6,25.0,1.87,Credit Card,5,4
+1248,234,Sports,89.64,8,15.0,6.2,Credit Card,4,9
+1249,294,Home & Garden,25.11,1,10.0,7.39,Bank Transfer,2,4
+1250,227,Home & Garden,32.29,1,5.0,6.06,Bank Transfer,1,4
+1251,132,Clothing,27.85,7,25.0,7.96,Credit Card,5,3
+1252,275,Electronics,16.64,8,0.0,8.93,Cash on Delivery,4,4
+1253,121,Books,392.4,3,30.0,0.15,Cash on Delivery,5,4
+1254,337,Sports,20.17,5,0.0,6.96,Credit Card,3,6
+1255,257,Books,92.16,1,25.0,14.45,Credit Card,3,7
+1256,137,Books,11.09,7,5.0,7.79,PayPal,1,3
+1257,329,Clothing,48.04,5,30.0,10.16,Cash on Delivery,5,6
+1258,150,Home & Garden,53.46,8,10.0,4.68,Cash on Delivery,4,8
+1259,363,Electronics,32.32,8,0.0,11.61,Credit Card,5,7
+1260,382,Clothing,18.71,9,30.0,11.59,Credit Card,3,3
+1261,126,Clothing,25.45,7,30.0,7.82,PayPal,4,4
+1262,325,Clothing,22.13,1,5.0,14.64,PayPal,4,6
+1263,376,Electronics,365.78,3,5.0,1.88,Credit Card,3,8
+1264,385,Electronics,32.38,8,25.0,0.25,Cash on Delivery,5,3
+1265,196,Books,55.97,3,0.0,11.55,PayPal,5,4
+1266,383,Clothing,196.69,8,30.0,12.11,Bank Transfer,5,3
+1267,246,Books,13.79,1,15.0,1.8,Cash on Delivery,5,8
+1268,103,Electronics,34.39,5,30.0,3.98,Bank Transfer,3,1
+1269,134,Clothing,25.3,4,25.0,0.26,PayPal,3,3
+1270,291,Clothing,30.38,5,20.0,4.4,PayPal,5,7
+1271,148,Electronics,27.69,8,0.0,11.6,Credit Card,1,5
+1272,116,Clothing,15.93,4,0.0,7.77,PayPal,5,9
+1273,271,Electronics,40.26,4,0.0,5.22,Credit Card,5,5
+1274,319,Electronics,11.44,3,10.0,5.58,PayPal,4,4
+1275,257,Sports,89.02,7,10.0,0.02,Credit Card,5,5
+1276,145,Clothing,61.76,3,10.0,4.5,Credit Card,3,7
+1277,105,Home & Garden,20.22,3,5.0,9.7,Credit Card,3,3
+1278,198,Clothing,21.22,5,10.0,14.61,Credit Card,2,6
+1279,332,Books,43.62,5,0.0,12.71,Bank Transfer,4,7
+1280,136,Home & Garden,14.9,6,0.0,0.35,Bank Transfer,3,4
+1281,379,Books,202.75,8,10.0,13.48,PayPal,3,4
+1282,280,Clothing,47.37,6,30.0,11.75,Credit Card,5,4
+1283,194,Clothing,49.07,1,30.0,11.71,Credit Card,5,3
+1284,198,Clothing,65.46,8,5.0,6.87,Credit Card,3,4
+1285,287,Sports,18.55,8,0.0,5.97,Credit Card,4,2
+1286,215,Home & Garden,98.4,9,0.0,4.54,Cash on Delivery,5,7
+1287,290,Sports,37.13,9,0.0,0.99,Credit Card,2,6
+1288,352,Electronics,85.64,2,25.0,3.42,Credit Card,2,7
+1289,260,Books,27.17,2,0.0,3.7,Credit Card,3,5
+1290,355,Sports,123.63,3,25.0,7.26,Credit Card,4,4
+1291,227,Electronics,49.47,1,20.0,11.21,PayPal,3,5
+1292,117,Electronics,293.68,4,25.0,7.11,PayPal,5,4
+1293,380,Books,22.88,4,15.0,0.87,Credit Card,4,7
+1294,322,Books,40.63,9,30.0,14.37,Credit Card,4,5
+1295,153,Home & Garden,11.8,9,0.0,14.14,Credit Card,3,6
+1296,157,Electronics,19.51,9,5.0,11.78,Credit Card,4,5
+1297,273,Home & Garden,61.48,7,15.0,14.87,Credit Card,4,2
+1298,379,Electronics,102.44,2,25.0,8.17,Cash on Delivery,5,4
+1299,213,Electronics,642.27,5,10.0,14.44,PayPal,5,4
+1300,387,Electronics,30.07,4,0.0,1.13,PayPal,4,6
+1301,250,Home & Garden,13.02,8,15.0,5.49,PayPal,5,11
+1302,226,Books,70.34,2,5.0,3.38,PayPal,5,6
+1303,254,Clothing,10.72,6,30.0,2.94,PayPal,5,8
+1304,372,Clothing,58.22,5,0.0,2.11,PayPal,2,5
+1305,203,Home & Garden,20.04,2,5.0,9.34,Bank Transfer,1,3
+1306,398,Clothing,40.92,1,20.0,11.72,Credit Card,3,5
+1307,345,Home & Garden,98.6,8,20.0,8.67,PayPal,4,1
+1308,275,Clothing,29.64,2,5.0,2.2,PayPal,4,8
+1309,138,Clothing,84.17,7,15.0,12.17,Cash on Delivery,4,6
+1310,269,Clothing,79.29,9,0.0,9.54,PayPal,5,4
+1311,346,Clothing,5.13,9,15.0,5.82,PayPal,5,7
+1312,125,Books,13.44,8,0.0,10.11,Credit Card,5,1
+1313,112,Clothing,6.95,9,25.0,3.9,PayPal,3,7
+1314,135,Electronics,245.12,2,0.0,5.18,Credit Card,4,3
+1315,272,Home & Garden,29.8,6,20.0,13.76,Credit Card,3,9
+1316,119,Clothing,196.53,4,30.0,4.36,Credit Card,3,4
+1317,363,Clothing,6.47,4,0.0,7.05,PayPal,3,2
+1318,241,Sports,18.68,5,25.0,13.35,Credit Card,3,4
+1319,242,Books,73.74,3,20.0,10.62,Credit Card,4,6
+1320,191,Electronics,39.62,1,15.0,0.93,Cash on Delivery,5,2
+1321,387,Sports,56.42,8,15.0,2.21,Credit Card,2,1
+1322,314,Books,9.45,5,15.0,0.12,PayPal,5,7
+1323,150,Clothing,131.21,3,30.0,9.46,PayPal,4,7
+1324,252,Electronics,72.03,7,0.0,6.72,Credit Card,3,6
+1325,285,Home & Garden,49.48,7,0.0,2.01,Bank Transfer,4,8
+1326,162,Books,16.68,1,15.0,14.37,Credit Card,3,7
+1327,289,Clothing,45.78,9,25.0,7.94,PayPal,4,5
+1328,224,Home & Garden,24.74,2,0.0,3.63,PayPal,4,6
+1329,249,Home & Garden,6.36,5,0.0,7.51,PayPal,3,6
+1330,157,Electronics,31.49,5,30.0,10.19,PayPal,2,7
+1331,279,Clothing,28.31,8,0.0,1.14,Credit Card,4,6
+1332,269,Electronics,95.81,8,0.0,4.12,Credit Card,5,3
+1333,370,Books,3.55,7,25.0,12.1,Bank Transfer,3,3
+1334,153,Electronics,41.9,7,0.0,6.89,PayPal,5,1
+1335,200,Books,10.43,6,5.0,8.2,Bank Transfer,4,5
+1336,363,Home & Garden,45.57,6,25.0,6.49,Bank Transfer,5,3
+1337,152,Home & Garden,48.15,9,0.0,0.66,Bank Transfer,5,9
+1338,159,Clothing,30.36,6,15.0,2.49,PayPal,4,8
+1339,207,Home & Garden,74.24,2,0.0,6.68,Credit Card,4,4
+1340,104,Electronics,9.53,2,0.0,3.14,Bank Transfer,5,2
+1341,202,Home & Garden,100.26,5,25.0,0.75,PayPal,4,3
+1342,295,Electronics,16.31,4,5.0,12.65,Credit Card,3,2
+1343,361,Clothing,6.99,2,0.0,14.72,Cash on Delivery,1,4
+1344,146,Home & Garden,25.22,3,20.0,11.9,Cash on Delivery,5,4
+1345,243,Electronics,4.07,7,10.0,12.81,PayPal,5,5
+1346,368,Electronics,42.7,8,10.0,3.63,Credit Card,2,8
+1347,223,Books,25.55,6,0.0,14.41,Credit Card,4,6
+1348,205,Books,113.71,5,15.0,2.95,Bank Transfer,4,3
+1349,257,Books,63.37,1,30.0,14.27,Cash on Delivery,2,5
+1350,246,Books,8.23,8,30.0,14.92,Credit Card,5,6
+1351,244,Clothing,14.32,3,25.0,10.68,Credit Card,3,3
+1352,219,Clothing,55.74,6,10.0,14.72,Cash on Delivery,2,8
+1353,374,Clothing,77.25,3,0.0,8.54,Credit Card,4,8
+1354,191,Electronics,112.45,7,30.0,3.89,PayPal,5,5
+1355,157,Sports,111.55,7,0.0,6.55,Cash on Delivery,1,4
+1356,328,Books,30.28,9,25.0,8.9,Credit Card,4,2
+1357,216,Clothing,47.59,5,10.0,1.1,PayPal,4,6
+1358,378,Clothing,121.36,8,0.0,9.34,Credit Card,2,5
+1359,226,Sports,24.45,8,20.0,14.72,Credit Card,3,6
+1360,228,Electronics,48.41,1,20.0,2.85,Bank Transfer,4,7
+1361,157,Books,23.88,5,30.0,11.89,PayPal,3,3
+1362,221,Clothing,19.09,3,20.0,13.62,Cash on Delivery,5,9
+1363,100,Books,34.76,1,0.0,14.16,PayPal,5,2
+1364,338,Electronics,16.65,4,0.0,14.4,Credit Card,5,0
+1365,389,Home & Garden,29.05,8,25.0,7.82,Credit Card,3,6
+1366,195,Sports,11.76,3,0.0,14.66,Credit Card,5,4
+1367,225,Books,27.39,2,25.0,11.36,Credit Card,4,6
+1368,217,Books,51.85,9,25.0,2.43,Credit Card,3,4
+1369,147,Sports,18.38,5,10.0,7.15,Credit Card,2,5
+1370,188,Books,33.42,7,0.0,10.77,PayPal,2,2
+1371,336,Electronics,38.07,2,20.0,3.71,Bank Transfer,4,5
+1372,371,Books,52.07,9,10.0,9.61,PayPal,4,4
+1373,288,Books,28.97,9,25.0,10.0,Bank Transfer,3,3
+1374,291,Clothing,98.09,4,30.0,2.44,Credit Card,4,5
+1375,168,Books,4.05,4,20.0,8.48,Credit Card,3,3
+1376,377,Sports,625.0,6,20.0,11.57,PayPal,4,3
+1377,346,Sports,13.86,6,0.0,7.48,PayPal,4,4
+1378,175,Clothing,49.57,1,5.0,0.18,Credit Card,5,8
+1379,253,Electronics,12.96,9,0.0,0.14,Bank Transfer,5,5
+1380,243,Sports,63.07,2,0.0,5.36,Bank Transfer,4,4
+1381,185,Home & Garden,43.67,5,0.0,13.89,PayPal,4,4
+1382,284,Electronics,17.28,9,5.0,3.43,Credit Card,4,4
+1383,384,Sports,96.84,4,0.0,9.52,Bank Transfer,5,4
+1384,319,Home & Garden,28.11,3,5.0,3.33,PayPal,3,7
+1385,168,Clothing,57.24,7,0.0,4.83,Bank Transfer,3,8
+1386,146,Books,13.23,6,10.0,12.72,Bank Transfer,2,7
+1387,193,Clothing,32.11,8,0.0,10.93,Bank Transfer,4,3
+1388,337,Electronics,245.53,3,25.0,1.43,PayPal,4,6
+1389,303,Clothing,86.74,5,5.0,6.43,Credit Card,5,6
+1390,317,Home & Garden,45.04,4,0.0,0.44,PayPal,3,4
+1391,138,Electronics,21.14,4,0.0,7.21,PayPal,4,6
+1392,199,Clothing,35.43,4,0.0,9.94,Bank Transfer,5,9
+1393,388,Clothing,40.35,8,30.0,1.78,Credit Card,5,6
+1394,353,Clothing,51.9,6,20.0,4.33,Credit Card,4,4
+1395,321,Sports,11.28,3,0.0,5.97,Cash on Delivery,4,6
+1396,122,Clothing,64.61,5,30.0,13.79,Bank Transfer,3,7
+1397,349,Clothing,11.14,6,0.0,14.9,Cash on Delivery,5,4
+1398,109,Books,169.21,5,0.0,0.67,Bank Transfer,2,3
+1399,345,Clothing,15.31,6,0.0,11.42,PayPal,5,4
+1400,199,Electronics,44.55,8,0.0,5.58,PayPal,4,5
+1401,389,Clothing,90.48,7,15.0,5.89,Cash on Delivery,4,3
+1402,279,Electronics,25.73,5,30.0,11.31,PayPal,1,5
+1403,322,Electronics,46.55,6,30.0,13.78,PayPal,4,3
+1404,349,Clothing,139.1,4,20.0,14.26,Credit Card,4,5
+1405,246,Clothing,58.23,9,0.0,8.66,PayPal,3,5
+1406,195,Sports,47.25,4,5.0,5.36,Bank Transfer,4,5
+1407,356,Clothing,6.14,1,15.0,11.81,Credit Card,5,6
+1408,103,Books,13.02,7,10.0,3.77,Credit Card,4,6
+1409,115,Books,94.34,7,0.0,8.46,Credit Card,5,6
+1410,379,Electronics,58.55,4,15.0,5.38,Credit Card,2,5
+1411,346,Books,68.13,3,0.0,9.85,Credit Card,4,7
+1412,357,Electronics,62.51,8,25.0,3.61,PayPal,2,3
+1413,259,Sports,120.27,5,0.0,2.87,Cash on Delivery,4,5
+1414,251,Electronics,25.5,7,0.0,13.77,PayPal,5,7
+1415,277,Clothing,37.36,4,30.0,1.53,Credit Card,4,2
+1416,262,Electronics,11.84,4,0.0,7.59,Credit Card,2,8
+1417,132,Sports,9.23,8,0.0,3.31,PayPal,4,4
+1418,278,Clothing,6.4,8,20.0,0.58,Credit Card,4,2
+1419,200,Books,13.66,2,10.0,0.54,Bank Transfer,4,5
+1420,367,Electronics,156.42,2,10.0,2.63,PayPal,5,5
+1421,164,Books,7.01,3,0.0,13.0,Bank Transfer,5,4
+1422,267,Electronics,24.45,3,30.0,4.24,Credit Card,4,6
+1423,142,Home & Garden,9.09,1,20.0,14.26,PayPal,4,8
+1424,143,Electronics,18.16,3,25.0,8.72,Credit Card,3,4
+1425,384,Electronics,39.24,6,30.0,6.55,Cash on Delivery,2,3
+1426,111,Electronics,16.44,8,15.0,8.7,PayPal,4,6
+1427,194,Clothing,98.46,6,10.0,7.75,Credit Card,4,4
+1428,352,Books,153.54,5,15.0,11.38,Credit Card,4,2
+1429,341,Electronics,3.49,4,0.0,4.24,Credit Card,4,3
+1430,134,Home & Garden,16.73,3,5.0,5.3,PayPal,2,1
+1431,314,Clothing,35.13,4,0.0,13.41,Credit Card,4,9
+1432,189,Clothing,102.12,7,20.0,14.2,PayPal,3,5
+1433,363,Clothing,21.03,1,30.0,13.39,Credit Card,3,3
+1434,192,Clothing,32.46,7,10.0,6.29,PayPal,5,4
+1435,189,Books,10.42,1,15.0,11.71,Bank Transfer,1,3
+1436,214,Electronics,7.15,2,0.0,7.15,Bank Transfer,4,4
+1437,204,Electronics,140.52,4,0.0,7.46,Bank Transfer,3,6
+1438,295,Home & Garden,5.34,1,0.0,3.07,Credit Card,5,4
+1439,213,Sports,339.89,9,30.0,8.87,Credit Card,4,2
+1440,174,Clothing,68.38,6,20.0,2.79,PayPal,3,6
+1441,316,Clothing,65.36,1,25.0,4.97,Credit Card,4,3
+1442,376,Books,58.88,1,30.0,12.83,PayPal,5,6
+1443,348,Clothing,25.72,6,15.0,3.11,Credit Card,5,2
+1444,263,Electronics,49.01,4,5.0,1.07,Credit Card,3,8
+1445,291,Electronics,27.42,4,0.0,1.04,Credit Card,5,3
+1446,326,Books,57.57,6,25.0,14.11,Cash on Delivery,5,6
+1447,276,Books,32.02,7,20.0,7.6,Credit Card,5,4
+1448,198,Electronics,12.8,9,0.0,6.14,PayPal,4,5
+1449,135,Electronics,13.87,5,25.0,12.16,Credit Card,4,6
+1450,195,Electronics,12.38,9,10.0,12.54,PayPal,4,1
+1451,251,Books,87.44,4,20.0,4.98,Credit Card,5,5
+1452,250,Electronics,17.86,2,5.0,10.4,Cash on Delivery,4,7
+1453,289,Electronics,4.89,3,10.0,11.57,Cash on Delivery,4,6
+1454,323,Home & Garden,49.25,1,25.0,9.82,Credit Card,4,6
+1455,136,Electronics,150.58,6,0.0,2.27,Cash on Delivery,5,7
+1456,367,Books,71.74,6,0.0,13.14,Cash on Delivery,5,4
+1457,282,Electronics,18.11,1,5.0,8.09,Bank Transfer,2,3
+1458,112,Electronics,6.77,3,0.0,4.24,Bank Transfer,5,8
+1459,378,Electronics,28.95,5,0.0,6.38,Credit Card,4,4
+1460,316,Books,28.24,3,0.0,0.56,PayPal,5,5
+1461,385,Home & Garden,12.56,3,0.0,1.92,Credit Card,4,5
+1462,372,Home & Garden,57.46,3,0.0,11.48,Credit Card,4,3
+1463,161,Clothing,209.9,5,15.0,0.0,Cash on Delivery,5,9
+1464,183,Books,41.36,5,10.0,6.25,Credit Card,3,8
+1465,316,Electronics,38.88,4,25.0,7.84,Bank Transfer,5,6
+1466,286,Clothing,12.97,1,0.0,0.82,Bank Transfer,4,3
+1467,118,Home & Garden,133.94,5,5.0,14.6,Cash on Delivery,4,5
+1468,276,Electronics,30.72,5,25.0,3.39,Cash on Delivery,3,5
+1469,199,Electronics,18.56,4,15.0,4.56,Credit Card,4,5
+1470,332,Electronics,35.29,6,0.0,4.56,Credit Card,3,3
+1471,175,Electronics,53.09,4,5.0,3.46,PayPal,1,7
+1472,364,Electronics,38.06,7,0.0,0.02,Credit Card,3,3
+1473,383,Books,110.63,7,0.0,10.94,Credit Card,1,0
+1474,305,Clothing,48.62,2,10.0,14.5,Credit Card,5,6
+1475,322,Home & Garden,24.93,3,25.0,3.36,Bank Transfer,5,6
+1476,151,Home & Garden,49.46,1,25.0,9.95,PayPal,4,4
+1477,243,Clothing,54.58,8,0.0,11.13,Credit Card,5,5
+1478,168,Clothing,9.06,9,5.0,12.73,PayPal,3,9
+1479,198,Clothing,104.52,4,15.0,6.34,Credit Card,4,5
+1480,124,Books,24.51,6,0.0,4.54,Credit Card,5,4
+1481,152,Clothing,25.15,9,0.0,4.88,Bank Transfer,5,3
+1482,250,Books,70.2,6,15.0,10.69,PayPal,4,6
+1483,243,Clothing,69.91,9,10.0,12.25,Bank Transfer,5,2
+1484,156,Books,16.43,4,10.0,2.72,Credit Card,3,6
+1485,138,Clothing,73.91,8,10.0,5.56,Bank Transfer,5,6
+1486,208,Clothing,18.91,9,10.0,13.53,PayPal,1,6
+1487,280,Sports,204.3,4,0.0,12.1,PayPal,4,5
+1488,141,Home & Garden,14.47,5,20.0,14.77,PayPal,4,3
+1489,285,Electronics,42.08,8,15.0,11.31,Cash on Delivery,4,4
+1490,322,Home & Garden,15.15,6,5.0,5.9,PayPal,2,4
+1491,221,Clothing,305.73,7,0.0,8.86,PayPal,5,5
+1492,232,Home & Garden,9.6,3,30.0,9.92,Cash on Delivery,3,4
+1493,262,Home & Garden,55.94,7,0.0,1.18,Bank Transfer,4,4
+1494,314,Clothing,15.88,8,5.0,8.17,PayPal,3,5
+1495,320,Electronics,23.24,6,0.0,10.64,Bank Transfer,3,5
+1496,334,Clothing,52.12,9,15.0,2.51,Credit Card,4,5
+1497,245,Clothing,112.68,6,5.0,11.71,Credit Card,4,7
+1498,338,Books,167.9,9,10.0,8.76,PayPal,3,3
+1499,175,Clothing,7.12,4,10.0,14.28,Cash on Delivery,3,2
+1500,108,Electronics,43.28,8,30.0,0.64,Cash on Delivery,4,4
