@@ -1,0 +1,11 @@
+order_id,user_id,group,order_value,converted,visit_duration_sec,device
+1,101,control,520.50,1,245,desktop
+2,102,treatment,610.00,1,312,mobile
+3,103,control,0.00,0,45,mobile
+4,104,treatment,540.25,1,198,desktop
+5,105,control,480.00,1,267,desktop
+6,106,treatment,0.00,0,32,mobile
+7,107,control,0.00,0,89,tablet
+8,108,treatment,720.80,1,402,desktop
+9,109,control,350.00,1,178,mobile
+10,110,treatment,590.00,1,289,desktop
