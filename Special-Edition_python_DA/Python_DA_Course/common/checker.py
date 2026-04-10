@@ -3,13 +3,13 @@ from __future__ import annotations
 
 import hashlib
 
-# (session, salt, expected_hash, answer_type)
+# (salt, sha256_hash, answer_type) — 答案只存 hash，看原始碼也看不到
 _ANSWERS: dict[str, tuple[str, str, str]] = {
-    "S1": ("a1b2", "", "scalar_float"),
-    "S2": ("c3d4", "", "scalar_int"),
-    "S3": ("e5f6", "", "string"),
-    "S4": ("g7h8", "", "scalar_int"),
-    "S5": ("i9j0", "", "string"),
+    "S1": ("b82eb58cf00db96b", "86a13e8199f205aefb8fb888b51b5c3eacdbf131ea3c458b9031b2419914ab1f", "scalar_float"),
+    "S2": ("55aa04661f1ae01d", "65b01ebc23c05634e7b2d860f6419f1315ca11805c6f6b6aac69898a19e81efd", "scalar_int"),
+    "S3": ("050128305c0a6cc3", "946807bb0f40474aeb185efb777fa18e886037dc5d2ae664c36b4ce7f112c72e", "string"),
+    "S4": ("89c39799a0bb306c", "8df8c66eb0b301bcceb00afe9114448feb9a4a1634e0e265818538b8dbdd51f8", "scalar_int"),
+    "S5": ("99e8a10951b402ef", "2ac15345b19fdcc550ad2a54516321f0933a2d61b50f1d4b74c51f584814831b", "string"),
 }
 
 
@@ -27,22 +27,6 @@ def _canon(answer, atype: str) -> str:
             return str(tuple(int(x) for x in answer))
         return str(answer).strip()
     return str(answer).strip()
-
-
-def _build_answers() -> None:
-    """One-time: compute hashes (called at import)."""
-    raw = {
-        "S1": ("a1b2", "27153.1", "scalar_float"),
-        "S2": ("c3d4", "188",     "scalar_int"),
-        "S3": ("e5f6", "Books",   "string"),
-        "S4": ("g7h8", "186506",  "scalar_int"),
-        "S5": ("i9j0", "North",   "string"),
-    }
-    for k, (salt, val, atype) in raw.items():
-        _ANSWERS[k] = (salt, _hash(val, salt), atype)
-
-
-_build_answers()
 
 
 def check(session: str, answer) -> None:
