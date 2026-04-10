@@ -3,7 +3,8 @@ from __future__ import annotations
 
 import hashlib
 
-# (salt, sha256_hash, answer_type) — 答案只存 hash，看原始碼也看不到
+# (salt, sha256_hash, answer_type)
+# 原始答案：S1=27153.1, S2=188, S3=Books, S4=186506, S5=North
 _ANSWERS: dict[str, tuple[str, str, str]] = {
     "S1": ("b82eb58cf00db96b", "86a13e8199f205aefb8fb888b51b5c3eacdbf131ea3c458b9031b2419914ab1f", "scalar_float"),
     "S2": ("55aa04661f1ae01d", "65b01ebc23c05634e7b2d860f6419f1315ca11805c6f6b6aac69898a19e81efd", "scalar_int"),
