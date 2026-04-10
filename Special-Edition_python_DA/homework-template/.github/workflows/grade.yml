@@ -1,0 +1,102 @@
+name: 📝 自動批改作業
+
+# -------------------------------------------------------
+# 安全設計：使用 pull_request_target
+# - grader / tests / solutions 來自老師的 repo（base）
+# - 只從學生的 PR 抓 homework/ 資料夾
+# - 學生無法竄改評分邏輯
+# -------------------------------------------------------
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+    paths:
+      - 'homework/**'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  grade:
+    name: 批改 & 回報成績
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 老師的 repo（grader + tests + solutions）
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+
+      - name: 抓取學生的作業檔案（只拿 homework/）
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          HEAD_REPO: ${{ github.event.pull_request.head.repo.full_name }}
+        run: |
+          # 從學生 fork 的 PR 只下載 homework/ 目錄的檔案
+          gh api "repos/$HEAD_REPO/contents/homework?ref=$HEAD_SHA" \
+            --jq '.[] | select(.type == "file") | "\(.path) \(.download_url)"' | \
+          while read -r fpath url; do
+            echo "下載: $fpath"
+            curl -sL "$url" -o "$fpath"
+          done
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: 執行自動批改（不含解答）
+        id: grading
+        run: python grader/run_grader.py --no-solutions
+
+      - name: 貼成績到 PR comment
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          if [ -f grading_report.md ]; then
+            # 刪除舊的批改 comment（避免重複）
+            gh api "repos/${{ github.repository }}/issues/$PR_NUMBER/comments" \
+              --jq '.[] | select(.body | startswith("# 📊")) | .id' | \
+            while read cid; do
+              gh api -X DELETE "repos/${{ github.repository }}/issues/comments/$cid"
+            done
+
+            # 貼新的批改結果
+            gh pr comment "$PR_NUMBER" --body-file grading_report.md
+          fi
+
+      - name: 加上分數 label
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          SCORE="${{ steps.grading.outputs.score }}"
+          TOTAL="${{ steps.grading.outputs.total }}"
+          PCT="${{ steps.grading.outputs.percent }}"
+
+          if [ -n "$SCORE" ]; then
+            # 移除舊的分數 label
+            gh pr edit "$PR_NUMBER" --remove-label "score:A,score:B,score:C,score:D,score:F" 2>/dev/null || true
+
+            # 判斷等級
+            if [ "$PCT" -ge 90 ] 2>/dev/null; then GRADE="A"
+            elif [ "$PCT" -ge 80 ] 2>/dev/null; then GRADE="B"
+            elif [ "$PCT" -ge 70 ] 2>/dev/null; then GRADE="C"
+            elif [ "$PCT" -ge 60 ] 2>/dev/null; then GRADE="D"
+            else GRADE="F"
+            fi
+
+            # 建立 label（如果不存在）
+            gh label create "score:$GRADE" --color 0E8A16 --force 2>/dev/null || true
+            gh label create "graded" --color 1D76DB --force 2>/dev/null || true
+
+            # 貼上 label
+            gh pr edit "$PR_NUMBER" --add-label "score:$GRADE,graded"
+          fi

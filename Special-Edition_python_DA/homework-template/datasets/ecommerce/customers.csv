@@ -1,0 +1,27 @@
+customer_id,customer_name,region,signup_date,vip_level
+2001,Alice Chen,South,2023-10-01,Silver
+2002,Bob Wang,West,2023-07-14,Gold
+2003,Carol Huang,South,2023-12-17,Gold
+2004,David Chen,South,2024-02-25,Bronze
+2005,Emma Liu,West,2023-05-18,Bronze
+2006,Frank Wang,East,2023-04-19,Platinum
+2007,Grace Lin,West,2023-03-15,Gold
+2008,Henry Wang,South,2024-01-17,Gold
+2009,Ivy Huang,West,2024-04-04,Platinum
+2010,Jack Liu,South,2023-03-12,Platinum
+2011,Kate Chen,North,2024-03-16,Bronze
+2012,Leo Wang,South,2024-02-10,Platinum
+2013,Mia Huang,North,2023-07-17,Platinum
+2014,Nick Huang,West,2023-09-28,Gold
+2015,Olivia Huang,North,2023-12-15,Bronze
+2016,Paul Huang,East,2024-01-29,Gold
+2017,Quinn Chen,East,2023-08-11,Silver
+2018,Rachel Lin,North,2024-05-03,Gold
+2019,Sam Huang,South,2023-09-17,Bronze
+2020,Tina Liu,South,2023-03-20,Gold
+2021,Uma Wang,North,2023-11-03,Gold
+2022,Victor Lin,North,2023-02-27,Gold
+2023,Wendy Liu,South,2023-01-30,Silver
+2024,Xander Huang,North,2023-02-13,Platinum
+2025,Yuki Chen,South,2023-03-07,Platinum
+2026,Zoe Huang,South,2023-05-16,Platinum

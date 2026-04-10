@@ -1,0 +1,29 @@
+name: 🔑 我的成績與解答
+
+# -------------------------------------------------------
+# 這個 workflow 跑在學生自己 fork 的 repo
+# 只有 repo owner 看得到 Actions 結果
+# → 解答只有學生自己看得到
+# -------------------------------------------------------
+on:
+  push:
+    paths:
+      - 'homework/**'
+
+jobs:
+  my-grade:
+    name: 批改 & 顯示解答
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: 批改作業（含完整解答）
+        run: python grader/run_grader.py

@@ -1,0 +1,31 @@
+product_id,product_name,category,unit_price,stock_qty
+1001,Wireless Mouse,Electronics,1627,12
+1002,USB-C Cable,Electronics,1875,125
+1003,Bluetooth Speaker,Electronics,620,52
+1004,Webcam HD,Electronics,1718,279
+1005,Laptop Stand,Electronics,290,216
+1006,Power Bank,Electronics,157,47
+1007,Python Cookbook,Books,609,258
+1008,Data Science Handbook,Books,1537,287
+1009,SQL Guide,Books,561,279
+1010,ML Primer,Books,1095,229
+1011,Statistics 101,Books,1506,3
+1012,Clean Code,Books,1916,81
+1013,Cotton T-Shirt,Clothing,1769,174
+1014,Denim Jeans,Clothing,752,110
+1015,Hoodie,Clothing,2396,172
+1016,Sneakers,Clothing,327,194
+1017,Cap,Clothing,314,176
+1018,Scarf,Clothing,1541,22
+1019,Coffee Mug,Home,1846,274
+1020,Desk Lamp,Home,382,193
+1021,Throw Pillow,Home,271,150
+1022,Candle Set,Home,2087,185
+1023,Wall Clock,Home,1477,35
+1024,Plant Pot,Home,191,116
+1025,Yoga Mat,Sports,1951,40
+1026,Dumbbell 5kg,Sports,2150,51
+1027,Running Shoes,Sports,1000,232
+1028,Water Bottle,Sports,1618,186
+1029,Jump Rope,Sports,474,181
+1030,Resistance Band,Sports,587,136

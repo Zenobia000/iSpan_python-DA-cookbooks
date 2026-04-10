@@ -1,0 +1,85 @@
+name: 📋 彙整全班成績
+
+# 老師手動觸發，掃描所有已批改的 PR，產出成績總表
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  collect:
+    name: 產出成績 CSV
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 掃描所有已批改 PR 並產出 CSV
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "student,pr_number,score,total,percent,grade,submitted_at,pr_url" > grades.csv
+
+          # 取得所有有 'graded' label 的 PR
+          gh pr list --label "graded" --state all --json number,author,labels,createdAt,url --limit 200 | \
+          python3 -c "
+          import json, sys, re
+
+          prs = json.load(sys.stdin)
+          for pr in prs:
+              student = pr['author']['login']
+              number = pr['number']
+              created = pr['createdAt'][:10]
+              url = pr['url']
+
+              # 從 labels 找分數等級
+              grade = 'N/A'
+              for label in pr.get('labels', []):
+                  name = label.get('name', '')
+                  if name.startswith('score:'):
+                      grade = name.split(':')[1]
+
+              # 從 PR comment 找實際分數
+              score, total, pct = 'N/A', 'N/A', 'N/A'
+              import subprocess
+              result = subprocess.run(
+                  ['gh', 'api', f\"repos/\${{ github.repository }}/issues/{number}/comments\",
+                   '--jq', '.[] | select(.body | startswith(\"# 📊\")) | .body'],
+                  capture_output=True, text=True
+              )
+              body = result.stdout
+              m = re.search(r'總分：(\d+)\s*/\s*(\d+)（(\d+)%）', body)
+              if m:
+                  score, total, pct = m.group(1), m.group(2), m.group(3)
+
+              print(f'{student},{number},{score},{total},{pct},{grade},{created},{url}')
+          " >> grades.csv
+
+          echo "--- 全班成績總表 ---"
+          cat grades.csv
+          echo ""
+          echo "共 $(tail -n +2 grades.csv | wc -l | tr -d ' ') 位同學已繳交"
+
+      - name: 產出 Summary 報表
+        run: |
+          {
+            echo "# 📋 全班成績總表"
+            echo ""
+            echo "| 學生 | PR | 分數 | 等級 | 繳交日 |"
+            echo "|:-----|:--:|:----:|:----:|:------:|"
+            tail -n +2 grades.csv | while IFS=, read -r student pr score total pct grade date url; do
+              echo "| \`$student\` | [#$pr]($url) | $score/$total ($pct%) | $grade | $date |"
+            done
+            echo ""
+            echo "---"
+            echo "*產出時間：$(date -u '+%Y-%m-%d %H:%M UTC')*"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 上傳 CSV
+        uses: actions/upload-artifact@v4
+        with:
+          name: grades-csv
+          path: grades.csv
+          retention-days: 365
